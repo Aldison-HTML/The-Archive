@@ -1,0 +1,238 @@
+header {
+    position: relative;
+    overflow: hidden;
+    height: 800px; /* Sets a clean 800px height */
+    background-color: #1C1C1E;
+}
+
+header h1 {
+    position: fixed;
+    top: 30px; /* Distance from the top edge of the screen */
+    left: 50%;
+    transform: translateX(-50%); /* Keeps it perfectly centered */
+    z-index: 10; /* Stays above books and page content */
+    margin: 0;
+    padding: 10px 24px;
+    font-size: 2.5rem;
+    font-family: 'Lora', serif;
+    color: #F8F7F4;
+    background-color: rgba(28, 28, 30, 0.85); /* Subtle dark pill so text stays readable over the light body */
+    backdrop-filter: blur(6px);
+    border-radius: 6px;
+}
+
+.floating-book {
+    position: absolute;
+    z-index: 1;
+    width: 140px; /* Adjust size as needed */
+    pointer-events: none; /* Prevents books from blocking text selection */
+    mix-blend-mode: lighten; /* Blends the image's dark background into the header */
+    opacity: 0.85;
+}
+
+section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+}
+
+section h1 {
+    padding-top: 50px;
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: 'Lora', serif;
+    color: #1C1C1E;
+}
+
+section p {
+    text-align: center;
+    font-size: 1.75rem;
+    font-family: 'Lora', serif;
+    color: #1C1C1E;
+}
+
+section p {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Lora', serif;
+    color: #1C1C1E;
+}
+
+hr {
+    border-style: solid;
+    color: #1C1C1E;
+}
+
+body {
+    background-color: #F8F7F4;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Navigation Styles --- */
+/* --- Horizontal Navigation Shelf --- */
+nav {
+    margin-top: 40px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Enables scrolling to the right */
+    scroll-behavior: smooth;
+    padding: 12px 4px 24px; /* Leaves room for the hover lift and scrollbar */
+}
+
+.nav-links a {
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 300px;
+    min-height: 95px; /* Gives the background artwork consistent breathing room */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 22px;
+    background-color: #1C1C1E; /* Fallback while images load */
+    color: #F8F7F4;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85); /* Keeps letters sharp over bright spots */
+    border: 1px solid #3A3A3E;
+    border-left: 5px solid #C5A059; /* Muted brass book-spine accent */
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(28, 28, 30, 0.15);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Dark gradient overlay so text stays readable while the right side shows off the image */
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(20, 20, 22, 0.88) 0%,
+        rgba(20, 20, 22, 0.65) 60%,
+        rgba(20, 20, 22, 0.35) 100%
+    );
+    z-index: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* Keep text and arrow sitting above the dark gradient overlay */
+.nav-links a > *,
+.nav-links a::after {
+    position: relative;
+    z-index: 2;
+}
+
+/* Note: Since raw text inside <a> cannot take z-index directly without a span,
+   isolation: isolate on the link lets ::before stay behind the text cleanly! */
+.nav-links a {
+    isolation: isolate;
+}
+
+.nav-links a::before {
+    z-index: -1;
+}
+
+/* Individual background images based on href */
+.nav-links a[href="Aldison.html"] {
+    background-image: url('Aldison.png');
+}
+
+.nav-links a[href="Dean.html"] {
+    background-image: url('Dean.png');
+}
+
+.nav-links a[href="Ersen.html"] {
+    background-image: url('Ersen.png');
+}
+
+.nav-links a[href="Kenrichie.html"] {
+    background-image: url('Kenrichie.png');
+}
+
+.nav-links a[href="Matthew.html"] {
+    background-image: url('Matthew.png');
+}
+
+/* Refined arrow badge */
+.nav-links a::after {
+    content: "→";
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    color: #F8F7F4;
+    margin-left: 16px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: rgba(28, 28, 30, 0.75);
+    border: 1px solid rgba(248, 247, 244, 0.25);
+    backdrop-filter: blur(2px);
+    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Hover state: lifts card, brightens artwork, and highlights the spine */
+.nav-links a:hover {
+    transform: translateY(-4px);
+    border-color: #C5A059;
+    border-left-color: #8C3B2B;
+    color: #FFFFFF;
+    box-shadow: 0 10px 22px rgba(28, 28, 30, 0.25);
+}
+
+.nav-links a:hover::before {
+    opacity: 0.75; /* Reveals more of your background picture on hover */
+}
+
+.nav-links a:hover::after {
+    transform: translateX(4px);
+    background-color: #8C3B2B;
+    border-color: #8C3B2B;
+}
+
+.curators {
+    position: absolute;
+    bottom: 24px;
+    left: 32px;
+    z-index: 5; /* Keeps names above the dark header background and books */
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #F8F7F4;
+    letter-spacing: 0.3px;
+}
+
+/* --- Custom Horizontal Scrollbar for .nav-links --- */
+.nav-links {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #C5A059 #EAE8E1; /* Firefox: thumb color, track color */
+}
+
+/* Chrome, Safari, and Edge */
+.nav-links::-webkit-scrollbar {
+    height: 10px; /* Thickness of the bottom scrollbar */
+}
+
+.nav-links::-webkit-scrollbar-track {
+    background: #EAE8E1; /* Warm parchment track */
+    border-radius: 5px;
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+    background-color: #1C1C1E; /* Charcoal thumb matching the header */
+    border-radius: 5px;
+    border: 2px solid #EAE8E1; /* Creates clean breathing room inside the track */
+}
+
+.nav-links::-webkit-scrollbar-thumb:hover {
+    background-color: #8C3B2B; /* Shifts to terracotta rust on hover */
+}

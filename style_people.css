@@ -1,0 +1,730 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@0,600;1,400&display=swap');
+
+
+/* =================================
+   COLOR PALETTE
+================================= */
+
+:root {
+    --background: #171614;
+    --surface: #211D19;
+    --mahogany: #302117;
+    --parchment: #DCC9A5;
+    --gold: #C5A059;
+    --muted-gold: #896B3F;
+    --text: #D8CBB5;
+}
+
+
+/* =================================
+   GENERAL
+================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 30px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--background);
+
+    background-image:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(137, 107, 63, 0.13),
+            transparent 65%
+        );
+
+    color: var(--text);
+    font-family: 'Lora', serif;
+    line-height: 1.8;
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+header {
+    position: relative;
+
+    min-height: 650px;
+    height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 0 24px;
+
+    background-color: var(--mahogany);
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(17, 15, 13, 0.35),
+            rgba(17, 15, 13, 0.65)
+        ),
+        url('ink.jpeg');
+
+    background-position: center;
+    background-size: cover;
+
+    border-bottom: 1px solid var(--gold);
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Header lighting */
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(197, 160, 89, 0.13),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Header title */
+
+header h1 {
+    position: relative;
+
+    font-family: 'Lora', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 600;
+
+    color: var(--parchment);
+
+    margin: 0 0 15px;
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(197, 160, 89, 0.15);
+}
+
+
+/* Curator subtitle */
+
+header .curator {
+    position: relative;
+
+    font-family: 'Lora', serif;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-style: italic;
+
+    color: var(--gold);
+
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+
+/* =================================
+   MAIN CONTENT
+================================= */
+
+section {
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+    padding: 90px 8% 120px;
+
+    background:
+        radial-gradient(
+            ellipse at 10% 10%,
+            rgba(137, 107, 63, 0.07),
+            transparent 40%
+        ),
+        var(--surface);
+
+    border-left: 1px solid rgba(197, 160, 89, 0.35);
+    border-right: 1px solid rgba(197, 160, 89, 0.35);
+
+    box-shadow:
+        0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =================================
+   SECTION HEADINGS
+================================= */
+
+section h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+
+    color: var(--parchment);
+    text-align: center;
+
+    margin: 0 0 50px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--muted-gold);
+
+    text-shadow:
+        0 2px 12px rgba(197, 160, 89, 0.12);
+}
+
+
+/* =================================
+   DIVIDERS
+================================= */
+
+hr {
+    border: none;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--muted-gold),
+        var(--gold),
+        var(--muted-gold),
+        transparent
+    );
+
+    margin: 45px 0;
+}
+
+
+/* =================================
+   PARAGRAPHS
+================================= */
+
+section > p {
+    max-width: 650px;
+
+    font-family: 'Lora', serif;
+    font-size: 1.08rem;
+
+    color: var(--text);
+
+    margin: 0 0 35px;
+    text-align: justify;
+}
+
+
+/* =================================
+   ARCHIVE INDEX
+================================= */
+
+.archive-index {
+    margin: 100px auto;
+    padding: 55px 7%;
+
+    width: 85%;
+    max-width: 1300px;
+
+    background:
+        linear-gradient(
+            rgba(25, 21, 17, 0.92),
+            rgba(25, 21, 17, 0.96)
+        ),
+        url("ink.jpeg");
+
+    background-position: center;
+    background-size: cover;
+
+    border: 1px solid var(--muted-gold);
+    border-left: 3px solid var(--gold);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Archive index heading */
+
+.archive-index h2 {
+    color: var(--parchment);
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+
+/* Archive index description */
+
+.archive-index > p {
+    color: #A99A82;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+
+/* Archive links */
+
+.archive-link {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* Individual archive entries */
+
+.archive-entry {
+    padding: 22px 25px;
+    margin: 18px 0;
+
+    background: rgba(220, 201, 165, 0.035);
+
+    border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+
+    transition: background 0.25s ease;
+}
+
+.archive-entry:hover {
+    background: rgba(197, 160, 89, 0.09);
+}
+
+
+/* Archive volume number */
+
+.archive-entry span {
+    color: var(--gold);
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+/* Archive entry title */
+
+.archive-entry h3 {
+    color: var(--parchment);
+
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+
+    margin: 10px 0;
+}
+
+
+/* Archive entry description */
+
+.archive-entry p {
+    color: #A99A82;
+
+    margin: 0;
+    line-height: 1.7;
+}
+
+
+/* =================================
+   QUOTE AND DOCUMENT GROUPS
+================================= */
+
+.document-group {
+    display: flex;
+    flex-direction: column;
+
+    width: 85%;
+    gap: 15px;
+
+    margin-top: 55px;
+    margin-bottom: 55px;
+}
+
+
+/* Left alignment */
+
+.document-group.left {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+
+/* Right alignment */
+
+.document-group.right {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+
+/* =================================
+   QUOTES
+================================= */
+
+.document-group .quote {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding: 20px 25px;
+
+    color: var(--gold);
+
+    font-family: 'Lora', serif;
+    font-style: italic;
+    line-height: 1.8;
+
+    background: rgba(197, 160, 89, 0.04);
+}
+
+
+/* Left quote */
+
+.document-group.left .quote {
+    text-align: left;
+
+    border-left: 2px solid var(--muted-gold);
+}
+
+
+/* Right quote */
+
+.document-group.right .quote {
+    text-align: right;
+
+    border-right: 2px solid var(--muted-gold);
+}
+
+
+/* =================================
+   PDF DOCUMENTS
+================================= */
+
+.document-group iframe {
+    display: block;
+
+    width: 100%;
+    height: 850px;
+
+    margin: 0;
+
+    border: 2px solid var(--gold);
+    border-radius: 3px;
+
+    background: #292522;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(197, 160, 89, 0.06);
+}
+
+
+/* =================================
+   IMAGES AND ARTIFACTS
+================================= */
+
+section img {
+    display: block;
+
+    width: min(55%, 650px);
+    height: auto;
+
+    margin: 50px auto 50px 0;
+
+    border: 2px solid var(--muted-gold);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.45),
+        0 0 15px rgba(197, 160, 89, 0.08);
+}
+
+
+/* =================================
+   FIGURE CAPTIONS
+================================= */
+
+figcaption {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-style: italic;
+
+    line-height: 1.6;
+    color: #A99778;
+
+    margin-top: 12px;
+    padding-top: 12px;
+
+    border-top: 1px solid var(--muted-gold);
+}
+
+
+/* =================================
+   CLOSING NOTE
+================================= */
+
+.closing-note {
+    max-width: 850px;
+
+    margin: 120px auto 100px;
+    padding: 45px 50px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--surface),
+        var(--mahogany)
+    );
+
+    border-top: 1px solid var(--muted-gold);
+    border-bottom: 1px solid var(--muted-gold);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Closing note heading */
+
+.closing-note h2 {
+    color: var(--parchment);
+
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+
+    margin-bottom: 25px;
+}
+
+
+/* Closing note text */
+
+.closing-note p {
+    color: #C2B49C;
+
+    line-height: 1.9;
+
+    margin: 15px auto;
+    max-width: 700px;
+}
+
+
+/* Curator signature */
+
+.closing-note .signature {
+    color: var(--gold);
+
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+
+    text-align: right;
+
+    margin-top: 35px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    padding: 45px 20px;
+    margin-top: 100px;
+
+    text-align: center;
+
+    background: #110F0D;
+
+    border-top: 1px solid var(--muted-gold);
+}
+
+
+footer p {
+    color: #897B65;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+
+footer p:first-child {
+    color: var(--gold);
+
+    font-family: 'Lora', serif;
+    font-size: 1.3rem;
+
+    letter-spacing: 3px;
+}
+
+
+/* =================================
+   TEXT SELECTION
+================================= */
+
+::selection {
+    background: var(--gold);
+    color: var(--background);
+}
+
+
+/* =================================
+   SCROLLBAR
+================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--muted-gold);
+
+    border: 2px solid var(--background);
+    border-radius: 10px;
+}
+
+
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+    /* Header */
+
+    header {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+
+    /* Main content */
+
+    section {
+        padding: 50px 6% 80px;
+    }
+
+    section > p {
+        max-width: 100%;
+    }
+
+
+    /* Archive index */
+
+    .archive-index {
+        width: 100%;
+
+        padding: 35px 6%;
+        margin: 65px auto;
+    }
+
+    .archive-entry {
+        padding: 18px;
+    }
+
+
+    /* Documents and quotes */
+
+    .document-group {
+        width: 100%;
+
+        margin: 35px 0;
+
+        gap: 12px;
+    }
+
+    .document-group iframe {
+        height: 550px;
+    }
+
+    .document-group .quote {
+        padding: 18px;
+    }
+
+
+    /* Images */
+
+    section img {
+        width: 100%;
+        margin: 35px 0;
+    }
+
+
+    /* Closing note */
+
+    .closing-note {
+        margin: 70px auto;
+        padding: 35px 25px;
+    }
+
+
+    /* Footer */
+
+    footer {
+        margin-top: 60px;
+    }
+
+}
+
+/* --- Return Navigation --- */
+
+.back-navigation {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0 50px;
+}
+
+.back-navigation a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+
+    background-color: #1C1C1E;
+    color: #F8F7F4;
+
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    text-decoration: none;
+
+    border: 1px solid #3A3A3E;
+    border-left: 5px solid #C5A059;
+    border-radius: 6px;
+
+    box-shadow: 0 4px 12px rgba(28, 28, 30, 0.15);
+
+    transition: 
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.back-navigation a:hover {
+    transform: translateY(-4px);
+    border-color: #C5A059;
+    border-left-color: #8C3B2B;
+    background-color: #302117;
+
+    box-shadow: 0 10px 22px rgba(28, 28, 30, 0.25);
+}
