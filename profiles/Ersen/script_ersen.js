@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         rune.textContent = enchantmentSymbols[Math.floor(Math.random() * enchantmentSymbols.length)];
         rune.style.left = Math.random() * 100 + "vw";
-        rune.style.animationDuration = (8 + Math.random() * 8) + "s";
-        rune.style.fontSize = (12 + Math.random() * 14) + "px";
+        rune.style.animationDuration = (10 + Math.random() * 6) + "s";
+        rune.style.fontSize = (12 + Math.random() * 12) + "px";
 
         document.body.appendChild(rune);
 
@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 16000);
     }
 
-    setInterval(createRune, 800);
+    // Increased interval from 800ms to 2000ms so it doesn't overload the CPU
+    setInterval(createRune, 2000);
 
 
     // =====================================
@@ -116,7 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const sparkleGlyphs = ["✦", "✧", "⚝", "★"];
 
     document.addEventListener("click", (e) => {
-        for (let i = 0; i < 8; i++) {
+        // Reduced particle count from 8 to 4 for buttery-smooth performance
+        for (let i = 0; i < 4; i++) {
             const sparkle = document.createElement("span");
             sparkle.classList.add("arcane-rune");
             
@@ -126,23 +128,23 @@ document.addEventListener("DOMContentLoaded", () => {
             sparkle.style.top = `${e.clientY}px`;
             sparkle.style.position = "fixed";
             sparkle.style.zIndex = "10001";
-            sparkle.style.fontSize = (10 + Math.random() * 10) + "px";
+            sparkle.style.fontSize = (10 + Math.random() * 8) + "px";
 
             const angle = Math.random() * Math.PI * 2;
-            const distance = 40 + Math.random() * 70;
+            const distance = 30 + Math.random() * 50;
             const dx = Math.cos(angle) * distance;
             const dy = Math.sin(angle) * distance;
 
             sparkle.style.setProperty("--dx", `${dx}px`);
             sparkle.style.setProperty("--dy", `${dy}px`);
             
-            sparkle.style.animation = `clickBurst 0.6s ease-out forwards`;
+            sparkle.style.animation = `clickBurst 0.5s ease-out forwards`;
 
             document.body.appendChild(sparkle);
 
             setTimeout(() => {
                 sparkle.remove();
-            }, 600);
+            }, 500);
         }
     });
 
