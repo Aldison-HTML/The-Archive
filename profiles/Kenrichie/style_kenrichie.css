@@ -377,7 +377,7 @@ hr {
 .volume-section > h2 {
     text-align: left;
 
-    color: #18532a4e;
+    color: #bbffc44e;
     font-size: 2rem;
 
     margin-bottom: 15px;
@@ -385,7 +385,7 @@ hr {
 }
 
 .volume-section > h3 {
-    color: #18532a4e;
+    color: #bbffc44e;
 
     font-size: 1.1rem;
     font-weight: normal;
@@ -547,7 +547,7 @@ section > hr {
             rgba(20, 15, 12, 0.98)
         );
 
-    border: 1px solid #674b32;
+    border: 1px solid #1a1746;
 
     box-shadow:
         inset 0 0 45px rgba(0, 0, 0, 0.65),
