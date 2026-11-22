@@ -89,7 +89,7 @@ section > h2 {
 ========================================= */
 
 .story {
-    max-width: 850px;
+    max-width: none;
     margin: 35px auto;
     color: #c5b99f;
     font-size: 1.05rem;
