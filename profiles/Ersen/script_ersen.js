@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
     // =====================================
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // =====================================
 
     const revealElements = document.querySelectorAll(
-        ".story, .document-group, .archive-entry, .closing-note"
+        ".story, .document-group, .archive-entry, .closing-note, .codex-progress-box"
     );
 
     revealElements.forEach(element => {
@@ -44,42 +43,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =====================================
-    // 3. FLOATING ARCANE SYMBOLS
+    // 3. MINECRAFT ENCHANTMENT TABLE GLYPHS
     // =====================================
 
-    const symbols = [
-        "ᚠ", "ᚱ", "ᚷ", "ᛉ", "ᛟ",
-        "✧", "✦", "☽", "⚝", "✵"
+    const enchantmentSymbols = [
+        "ᚠ", "ᚡ", "ᚢ", "ᚣ", "ᚤ", "ᚥ", "ᚦ", "ᚧ", 
+        "ᚨ", "ᚩ", "ᚪ", "ᚫ", "ᚬ", "ᚭ", "ᚮ", "ᚯ", 
+        "ᚰ", "ᚱ", "ᚲ", "ᚳ", "ᚴ", "ᚵ", "ᚶ", "ᚷ", 
+        "ᚸ", "ᚹ", "ᚺ", "ᚻ", "ᚼ", "ᚽ", "ᚾ", "ᚿ",
+        "⡎", "⡜", "⣠", "⣷", "⣾", "⣻", "⣽", "⣾"
     ];
 
     function createRune() {
-
         const rune = document.createElement("span");
-
         rune.classList.add("arcane-rune");
 
-        rune.textContent =
-            symbols[Math.floor(Math.random() * symbols.length)];
-
+        rune.textContent = enchantmentSymbols[Math.floor(Math.random() * enchantmentSymbols.length)];
         rune.style.left = Math.random() * 100 + "vw";
-
-        rune.style.animationDuration =
-            (12 + Math.random() * 12) + "s";
-
-        rune.style.fontSize =
-            (14 + Math.random() * 15) + "px";
-
-        rune.style.opacity =
-            (0.1 + Math.random() * 0.2);
+        rune.style.animationDuration = (8 + Math.random() * 8) + "s";
+        rune.style.fontSize = (12 + Math.random() * 14) + "px";
 
         document.body.appendChild(rune);
 
         setTimeout(() => {
             rune.remove();
-        }, 25000);
+        }, 16000);
     }
 
-    setInterval(createRune, 1800);
+    setInterval(createRune, 800);
 
 
     // =====================================
@@ -89,16 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const archiveEntries = document.querySelectorAll(".archive-entry");
 
     archiveEntries.forEach(entry => {
-
         entry.addEventListener("mouseenter", () => {
-            entry.style.boxShadow =
-                "0 0 20px rgba(190, 153, 88, 0.15)";
+            entry.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.2)";
         });
 
         entry.addEventListener("mouseleave", () => {
             entry.style.boxShadow = "none";
         });
-
     });
 
 
@@ -107,26 +95,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // =====================================
 
     const progressBar = document.createElement("div");
-
     progressBar.classList.add("reading-progress");
-
     document.body.appendChild(progressBar);
 
     function updateProgress() {
-
         const scrollTop = window.scrollY;
-
-        const scrollHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-
-        const progress =
-            scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
         progressBar.style.width = progress + "%";
     }
 
     window.addEventListener("scroll", updateProgress);
-
     updateProgress();
 
 });
