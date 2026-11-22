@@ -503,3 +503,24 @@ footer {
     }
 
 }
+
+/* =====================================
+   STORY WIDTH FIX
+===================================== */
+
+section p.story {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+
+    clear: both;
+
+    margin: 35px 0;
+
+    color: #c5b99f;
+    font-size: 1.05rem;
+    line-height: 2;
+
+    text-align: justify;
+}
