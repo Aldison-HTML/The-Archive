@@ -61,7 +61,7 @@ body::before {
         0,
         4,
         16,
-        calc(var(--abyss-darkness) * 0.88)
+        calc(var(--abyss-darkness) * 0.65)
     );
 
     pointer-events: none;
