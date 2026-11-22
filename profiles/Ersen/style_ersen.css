@@ -1,6 +1,5 @@
-
 /* =========================================
-   GENERAL SETTINGS
+   1. GENERAL & OBSIDIAN THEME
 ========================================= */
 
 * {
@@ -15,113 +14,136 @@ html {
 }
 
 body {
-    background-color: #171512;
-    color: #d2c3a5;
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.8;
+    background-color: #050507;
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 15% 40%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+    color: #e4decb;
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.85;
     overflow-x: hidden;
 }
 
+/* Custom Golden Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #050507;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #7a5c1e, #d4af37, #7a5c1e);
+    border-radius: 4px;
+}
+
 
 /* =========================================
-   HEADER
+   2. HEADER & ARCANE CREST
 ========================================= */
 
 header {
-    min-height: 330px;
-    padding: 90px 20px 75px;
+    min-height: 360px;
+    padding: 90px 20px 80px;
     text-align: center;
-
     background:
-        linear-gradient(
-            rgba(15, 13, 10, 0.65),
-            rgba(15, 13, 10, 0.95)
-        ),
+        radial-gradient(circle at center, rgba(18, 15, 10, 0.55) 0%, #050507 95%),
         url("libr.jpeg");
-
     background-size: cover;
     background-position: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
 
-    border-bottom: 2px solid #75603b;
+.arcane-crest {
+    font-size: 2.2rem;
+    color: #f3d266;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(243, 210, 102, 0.8);
+    animation: slowPulse 4s infinite ease-in-out;
+}
+
+@keyframes slowPulse {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.1); opacity: 1; }
 }
 
 header h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    color: #d8bd83;
-    letter-spacing: 4px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5.5vw, 4.3rem);
+    letter-spacing: 5px;
     text-transform: uppercase;
-
-    text-shadow:
-        0 0 15px rgba(185, 142, 70, 0.25),
-        2px 3px 5px #000;
+    
+    /* Metallic Gold Gradient Text */
+    background: linear-gradient(180deg, #fff3b0 0%, #d4af37 50%, #99741f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
 }
 
 .curator {
-    margin-top: 12px;
-    color: #a9956d;
-    font-style: italic;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
+    margin-top: 15px;
+    color: #c5a44d;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 
 /* =========================================
-   MAIN CONTENT
+   3. MAIN CONTENT & TYPOGRAPHY
 ========================================= */
 
 section {
-    max-width: 1550px;
+    max-width: 1400px;
     margin: auto;
-    padding: 60px 35px;
+    padding: 65px 35px;
 }
 
 section > h2 {
+    font-family: 'Cinzel', Georgia, serif;
     text-align: center;
     font-size: 2rem;
-    color: #d5b77b;
+    color: #f0cf65;
     margin-bottom: 25px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
 }
 
-
-/* =========================================
-   STORY TEXT
-========================================= */
-
 section .story {
-    width: auto;
-    max-width: none;
-    margin: 35px 0;
-
-    color: #c5b99f;
-    font-size: 1.05rem;
+    margin: 32px 0;
+    color: #d6cfb8;
+    font-size: 1.08rem;
     line-height: 2;
     text-align: justify;
 }
 
 
 /* =========================================
-   DIVIDERS
+   4. ARCANE DIVIDERS
 ========================================= */
 
 hr {
     border: none;
     height: 1px;
-    margin: 55px auto;
-
+    margin: 60px auto;
     background: linear-gradient(
         to right,
         transparent,
-        #80663d,
-        #c2a16a,
-        #80663d,
+        rgba(212, 175, 55, 0.3),
+        #ffe07d,
+        rgba(212, 175, 55, 0.3),
         transparent
     );
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
 }
 
 
 /* =========================================
-   NAVIGATION
+   5. NAVIGATION LINKS
 ========================================= */
 
 .back-navigation {
@@ -130,49 +152,65 @@ hr {
 }
 
 .back-navigation a {
-    color: #bda16d;
+    display: inline-block;
+    padding: 10px 24px;
+    color: #e6c35c;
+    font-family: 'Cinzel', serif;
     text-decoration: none;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-
-    transition: color 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(15, 13, 9, 0.8);
+    transition: all 0.35s ease;
 }
 
 .back-navigation a:hover {
-    color: #f0d69c;
+    color: #050507;
+    background: #d4af37;
+    border-color: #ffe484;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
 
 
 /* =========================================
-   ARCHIVE INDEX
+   6. GRIMOIRE ARCHIVE INDEX
 ========================================= */
 
 .archive-index {
     margin: 65px 0;
-    padding: 40px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(71, 55, 34, 0.28),
-            rgba(27, 23, 17, 0.85)
-        );
-
-    border: 1px solid #665335;
+    padding: 45px;
+    background: linear-gradient(145deg, #0d0b08, #060608);
+    border: 1px solid rgba(212, 175, 55, 0.45);
     box-shadow:
-        inset 0 0 35px rgba(0, 0, 0, 0.5),
-        0 10px 30px rgba(0, 0, 0, 0.3);
+        inset 0 0 40px rgba(212, 175, 55, 0.05),
+        0 15px 40px rgba(0, 0, 0, 0.85);
+    position: relative;
 }
 
+/* Glowing Corner Accents */
+.archive-index::before,
+.archive-index::after {
+    content: "✦";
+    position: absolute;
+    color: #d4af37;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #d4af37;
+}
+.archive-index::before { top: 12px; left: 15px; }
+.archive-index::after { bottom: 12px; right: 15px; }
+
 .archive-index > h2 {
-    color: #d6bb83;
-    font-size: 1.8rem;
+    font-family: 'Cinzel', serif;
+    color: #f3d266;
+    font-size: 1.85rem;
+    letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
 .archive-index > p {
-    color: #a99a7c;
+    color: #a89d7c;
     margin-bottom: 30px;
+    font-style: italic;
 }
 
 .archive-link {
@@ -182,44 +220,45 @@ hr {
 }
 
 .archive-entry {
-    padding: 25px;
-    margin: 18px 0;
-
-    background: rgba(12, 11, 9, 0.55);
-    border-left: 3px solid #80663d;
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        border-color 0.3s ease;
+    padding: 25px 30px;
+    margin: 20px 0;
+    background: rgba(12, 11, 14, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-left: 4px solid #b89028;
+    transition: all 0.35s ease;
 }
 
 .archive-entry:hover {
-    background: rgba(111, 84, 45, 0.2);
-    border-left-color: #d4b477;
-    transform: translateX(8px);
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.14), rgba(10, 10, 12, 0.95));
+    border-color: rgba(243, 210, 102, 0.6);
+    border-left-color: #ffe58f;
+    transform: translateX(10px);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
 }
 
 .archive-entry span {
-    color: #a78b58;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
 }
 
 .archive-entry h3 {
-    color: #ddc99f;
-    font-size: 1.35rem;
-    margin: 5px 0;
+    font-family: 'Cinzel', serif;
+    color: #fff2c2;
+    font-size: 1.4rem;
+    margin: 6px 0;
 }
 
 .archive-entry p {
-    color: #a99c83;
-    font-size: 0.95rem;
+    color: #b5ad96;
+    font-size: 0.96rem;
 }
 
 
 /* =========================================
-   DOCUMENT GROUPS
+   7. DOCUMENT GROUPS & ENCHANTED FRAMES
 ========================================= */
 
 .document-group {
@@ -240,38 +279,32 @@ hr {
 .document-group iframe {
     display: block;
     width: 100%;
-    height: 500px;
-
-    border: 5px solid #51432d;
-    background-color: #211c14;
-
+    height: 520px;
+    border: 2px solid #b89028;
+    background-color: #0b0a0d;
     box-shadow:
-        0 0 0 1px #a68a58,
-        0 12px 30px rgba(0, 0, 0, 0.6);
+        0 0 0 4px #08080a,
+        0 0 0 5px rgba(212, 175, 55, 0.45),
+        0 15px 35px rgba(0, 0, 0, 0.9),
+        0 0 25px rgba(212, 175, 55, 0.15);
 }
 
 
 /* =========================================
-   QUOTES
+   8. ARCANE QUOTES
 ========================================= */
 
 .quote {
-    color: #c6ad7b;
+    color: #f0d478;
     font-style: italic;
     font-size: 1.05rem;
     line-height: 1.8;
-
     padding: 20px 25px;
     margin-bottom: 20px;
-
-    background: rgba(95, 72, 39, 0.13);
-    border-left: 2px solid #a78b58;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.12), rgba(10, 10, 12, 0.6));
+    border-left: 3px solid #d4af37;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
 }
-
-
-/* =========================================
-   CLEAR FLOATS
-========================================= */
 
 section > hr {
     clear: both;
@@ -279,134 +312,127 @@ section > hr {
 
 
 /* =========================================
-   CLOSING NOTE
+   9. READTHEORY CODEX PROGRESS BOX
+========================================= */
+
+.codex-progress-box {
+    max-width: 850px;
+    margin: 80px auto;
+    padding: 45px 35px;
+    text-align: center;
+    background: radial-gradient(circle at top, #14110b, #070709);
+    border: 1px solid #d4af37;
+    box-shadow: 
+        0 0 35px rgba(212, 175, 55, 0.15),
+        inset 0 0 40px rgba(0, 0, 0, 0.85);
+}
+
+.codex-progress-box h2 {
+    font-family: 'Cinzel', serif;
+    color: #f3d266;
+    font-size: 1.85rem;
+    letter-spacing: 2.5px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.45);
+}
+
+.codex-progress-box img {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin: auto;
+    border: 2px solid #d4af37;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.codex-caption {
+    color: #c2aa63;
+    font-size: 0.95rem;
+    font-style: italic;
+    margin-top: 22px;
+}
+
+
+/* =========================================
+   10. CLOSING NOTE & FOOTER
 ========================================= */
 
 .closing-note {
     clear: both;
     margin-top: 70px;
-    padding: 40px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(75, 57, 34, 0.25),
-            rgba(22, 19, 14, 0.9)
-        );
-
-    border: 1px solid #665335;
-
-    box-shadow:
-        inset 0 0 30px rgba(0, 0, 0, 0.4);
+    padding: 45px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(8, 8, 10, 0.95));
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.8);
 }
 
 .closing-note h2 {
-    color: #d6bb83;
+    font-family: 'Cinzel', serif;
+    color: #f3d266;
     font-size: 1.8rem;
+    letter-spacing: 2px;
     margin-bottom: 20px;
 }
 
 .signature {
+    font-family: 'Cinzel', serif;
     text-align: right;
-    color: #b69a66;
-    font-style: italic;
+    color: #e6c35c;
+    font-size: 1.05rem;
+    letter-spacing: 1.5px;
     margin-top: 30px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
-
-
-/* =========================================
-   FOOTER
-========================================= */
 
 footer {
     clear: both;
-    padding: 45px 20px;
+    padding: 55px 20px;
     text-align: center;
+    background-color: #030304;
+    border-top: 1px solid rgba(212, 175, 55, 0.4);
+}
 
-    background-color: #100e0b;
-    border-top: 2px solid #665335;
+footer .footer-title {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
 footer p {
-    color: #968365;
+    color: #8c7e58;
     font-size: 0.9rem;
     margin: 5px 0;
 }
 
 
 /* =========================================
-   RESPONSIVE DESIGN
+   11. MAGICAL EFFECTS (CURSOR, REVEAL, MINECRAFT RUNES)
 ========================================= */
-
-@media (max-width: 768px) {
-
-    section {
-        padding: 40px 20px;
-    }
-
-    .archive-index {
-        padding: 25px;
-    }
-
-    .document-group,
-    .document-group.left,
-    .document-group.right {
-        float: none;
-        width: 100%;
-        margin: 35px 0;
-    }
-
-    .document-group iframe {
-        height: 450px;
-    }
-
-    .story {
-        text-align: left;
-    }
-
-    .closing-note {
-        padding: 25px;
-    }
-
-    header h1 {
-        letter-spacing: 2px;
-    }
-}
-
-
-/* =====================================
-   MAGICAL CURSOR GLOW
-===================================== */
 
 .cursor-glow {
     position: fixed;
-    width: 280px;
-    height: 280px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
-
     background: radial-gradient(
         circle,
-        rgba(184, 145, 76, 0.09),
+        rgba(243, 210, 102, 0.14) 0%,
+        rgba(212, 175, 55, 0.04) 45%,
         transparent 70%
     );
-
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
 
-
-/* =====================================
-   SCROLL REVEAL
-===================================== */
-
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .reveal.visible {
@@ -414,79 +440,85 @@ footer p {
     transform: translateY(0);
 }
 
-
-/* =====================================
-   FLOATING ARCANE RUNES
-===================================== */
-
+/* Minecraft-style Enchantment Table Floating Runes */
 .arcane-rune {
     position: fixed;
     bottom: -50px;
-    color: #c4a36a;
-
+    color: #f3d266;
     pointer-events: none;
     user-select: none;
     z-index: 0;
-
     animation: runeFloat linear forwards;
-
-    text-shadow:
-        0 0 8px rgba(205, 170, 100, 0.5);
+    text-shadow: 0 0 10px rgba(243, 210, 102, 0.9), 0 0 20px rgba(100, 220, 255, 0.4);
+    opacity: 0;
 }
 
 @keyframes runeFloat {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
     }
-
+    15% {
+        opacity: 0.8;
+    }
+    85% {
+        opacity: 0.8;
+    }
     100% {
-        transform: translateY(-110vh) rotate(180deg);
+        transform: translateY(-105vh) translateX(30px) rotate(180deg);
         opacity: 0;
     }
 }
-
-
-/* =====================================
-   READING PROGRESS BAR
-===================================== */
 
 .reading-progress {
     position: fixed;
     top: 0;
     left: 0;
-
     height: 3px;
     width: 0%;
-
     background: linear-gradient(
         to right,
-        #80663d,
-        #e1c58a,
-        #a78b58
+        #7a5c1e,
+        #ffe58f,
+        #d4af37
     );
-
-    box-shadow: 0 0 10px rgba(212, 180, 119, 0.5);
+    box-shadow: 0 0 12px rgba(255, 229, 143, 0.8);
     z-index: 10000;
 }
 
-
-/* =====================================
-   KEEP CONTENT ABOVE BACKGROUND EFFECTS
-===================================== */
-
-header,
-section,
-footer {
+header, section, footer {
     position: relative;
     z-index: 1;
 }
 
 
-/* =====================================
-   MOBILE ADJUSTMENTS
-===================================== */
+/* =========================================
+   12. RESPONSIVE MOBILE DESIGN
+========================================= */
 
 @media (max-width: 768px) {
+    section {
+        padding: 40px 20px;
+    }
+    .archive-index, .closing-note, .codex-progress-box {
+        padding: 25px;
+    }
+    .document-group,
+    .document-group.left,
+    .document-group.right {
+        float: none;
+        width: 100%;
+        margin: 35px 0;
+    }
+    .document-group iframe {
+        height: 450px;
+    }
+    .story {
+        text-align: left;
+    }
+    header h1 {
+        letter-spacing: 2px;
+    }
     .cursor-glow {
         display: none;
     }
