@@ -88,15 +88,17 @@ section > h2 {
    STORY TEXT
 ========================================= */
 
-.story {
+section .story {
+    width: 100%;
     max-width: none;
-    margin: 35px auto;
+
+    margin: 35px 0;
+
     color: #c5b99f;
     font-size: 1.05rem;
     line-height: 2;
     text-align: justify;
 }
-
 
 /* =========================================
    DIVIDERS
