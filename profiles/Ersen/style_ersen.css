@@ -89,9 +89,8 @@ section > h2 {
 ========================================= */
 
 section .story {
-    width: 100%;
+    width: auto;
     max-width: none;
-
     margin: 35px 0;
 
     color: #c5b99f;
@@ -99,6 +98,7 @@ section .story {
     line-height: 2;
     text-align: justify;
 }
+
 
 /* =========================================
    DIVIDERS
@@ -380,10 +380,8 @@ footer p {
 
 .cursor-glow {
     position: fixed;
-
     width: 280px;
     height: 280px;
-
     border-radius: 50%;
 
     background: radial-gradient(
@@ -394,7 +392,6 @@ footer p {
 
     pointer-events: none;
     transform: translate(-50%, -50%);
-
     z-index: 9999;
 }
 
@@ -424,14 +421,11 @@ footer p {
 
 .arcane-rune {
     position: fixed;
-
     bottom: -50px;
-
     color: #c4a36a;
 
     pointer-events: none;
     user-select: none;
-
     z-index: 0;
 
     animation: runeFloat linear forwards;
@@ -441,7 +435,6 @@ footer p {
 }
 
 @keyframes runeFloat {
-
     0% {
         transform: translateY(0) rotate(0deg);
     }
@@ -450,7 +443,6 @@ footer p {
         transform: translateY(-110vh) rotate(180deg);
         opacity: 0;
     }
-
 }
 
 
@@ -460,7 +452,6 @@ footer p {
 
 .reading-progress {
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -475,7 +466,6 @@ footer p {
     );
 
     box-shadow: 0 0 10px rgba(212, 180, 119, 0.5);
-
     z-index: 10000;
 }
 
@@ -497,30 +487,7 @@ footer {
 ===================================== */
 
 @media (max-width: 768px) {
-
     .cursor-glow {
         display: none;
     }
-
-}
-
-/* =====================================
-   STORY WIDTH FIX
-===================================== */
-
-section p.story {
-    display: block;
-
-    width: 100%;
-    max-width: none;
-
-    clear: both;
-
-    margin: 35px 0;
-
-    color: #c5b99f;
-    font-size: 1.05rem;
-    line-height: 2;
-
-    text-align: justify;
 }
