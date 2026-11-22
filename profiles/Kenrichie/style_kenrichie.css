@@ -1,6 +1,98 @@
 
 /* =========================================
-   MAIN CONTENT LAYOUT
+   GENERAL SETTINGS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 35px;
+}
+
+body {
+    background-color: #171310;
+    color: #d2c1a5;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    min-height: 420px;
+    padding: 110px 20px 90px;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(12, 9, 8, 0.55),
+            rgba(18, 13, 10, 0.95)
+        ),
+        url("laby.webp");
+
+    background-size: cover;
+    background-position: center;
+
+    border-bottom: 2px solid #755637;
+
+    position: relative;
+    overflow: hidden;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 15%,
+            rgba(0, 0, 0, 0.55) 100%
+        );
+
+    pointer-events: none;
+}
+
+header h1 {
+    position: relative;
+    z-index: 1;
+
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    color: #d9c19a;
+
+    letter-spacing: 5px;
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 15px rgba(173, 125, 72, 0.25),
+        2px 3px 5px #000;
+}
+
+.curator {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 15px;
+
+    color: #ae9472;
+    font-style: italic;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   MAIN CONTENT
 ========================================= */
 
 section {
@@ -11,8 +103,10 @@ section {
 
 section > h2 {
     text-align: center;
+
     font-size: 2.2rem;
     color: #c9a77b;
+
     margin-bottom: 35px;
     letter-spacing: 2px;
 }
@@ -25,6 +119,7 @@ section > h2 {
 .story {
     width: 100%;
     max-width: 1050px;
+
     margin: 40px auto 65px;
 
     color: #c5b79f;
@@ -36,18 +131,68 @@ section > h2 {
 
 
 /* =========================================
+   DIVIDERS
+========================================= */
+
+hr {
+    border: none;
+    height: 1px;
+
+    max-width: 1100px;
+    margin: 75px auto;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        #62462e,
+        #b18a5d,
+        #62462e,
+        transparent
+    );
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.back-navigation {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.back-navigation a {
+    color: #b99a72;
+
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+
+    transition:
+        color 0.3s ease,
+        letter-spacing 0.3s ease;
+}
+
+.back-navigation a:hover {
+    color: #e7c99d;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
    ARCHIVE INDEX
 ========================================= */
 
 .archive-index {
     max-width: 1100px;
+
     margin: 80px auto;
     padding: 45px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(83, 55, 34, 0.25),
+            rgba(83, 55, 34, 0.3),
             rgba(24, 18, 14, 0.95)
         );
 
@@ -59,17 +204,31 @@ section > h2 {
 }
 
 .archive-index > h2 {
-    text-align: center;
+    color: #d2b58b;
     font-size: 2rem;
-    margin-bottom: 15px;
+
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .archive-index > p {
+    color: #aa9678;
+
+    margin-bottom: 35px;
     text-align: center;
-    margin-bottom: 40px;
+}
+
+.archive-link {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
 }
 
 .archive-entry {
+    position: relative;
+    overflow: hidden;
+
     padding: 30px 35px;
     margin: 22px 0;
 
@@ -83,12 +242,31 @@ section > h2 {
     border: 1px solid rgba(120, 87, 55, 0.35);
     border-left: 4px solid #795638;
 
-    transition: 0.4s ease;
+    transition:
+        background 0.4s ease,
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.archive-entry::after {
+    content: "❧";
+
+    position: absolute;
+    right: 30px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 3rem;
+    color: rgba(190, 151, 101, 0.12);
+
+    transition:
+        color 0.4s ease,
+        transform 0.4s ease;
 }
 
 .archive-entry:hover {
-    transform: translateX(10px);
-
     background:
         linear-gradient(
             100deg,
@@ -98,8 +276,51 @@ section > h2 {
 
     border-left-color: #d1a875;
 
+    transform: translateX(10px);
+
     box-shadow:
         0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.archive-entry:hover::after {
+    color: rgba(210, 170, 115, 0.3);
+    transform: translateY(-50%) rotate(20deg);
+}
+
+.archive-entry span {
+    color: #aa835a;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+.archive-entry h3 {
+    color: #ddc7a4;
+    font-size: 1.4rem;
+    margin: 5px 0;
+}
+
+.archive-entry p {
+    color: #a99a83;
+    font-size: 0.95rem;
+}
+
+
+/* =========================================
+   ACTIVE ARCHIVE ENTRY
+========================================= */
+
+.archive-entry.active {
+    border-left-color: #d4ae7b;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(107, 73, 45, 0.4),
+            rgba(30, 22, 17, 0.9)
+        );
+
+    box-shadow:
+        inset 0 0 20px rgba(180, 135, 80, 0.08);
 }
 
 
@@ -111,8 +332,9 @@ section > h2 {
     position: relative;
 
     max-width: 1250px;
+
     margin: 110px auto;
-    padding: 55px 60px;
+    padding: 60px;
 
     background:
         linear-gradient(
@@ -130,7 +352,7 @@ section > h2 {
     overflow: hidden;
 }
 
-/* Decorative golden line */
+/* Decorative upper edge */
 
 .volume-section::before {
     content: "";
@@ -138,6 +360,7 @@ section > h2 {
     position: absolute;
     top: 0;
     left: 10%;
+
     width: 80%;
     height: 1px;
 
@@ -148,6 +371,8 @@ section > h2 {
         transparent
     );
 }
+
+/* Volume headings */
 
 .volume-section > h2 {
     text-align: left;
@@ -161,8 +386,8 @@ section > h2 {
 
 .volume-section > h3 {
     color: #aa835a;
-    font-size: 1.1rem;
 
+    font-size: 1.1rem;
     font-weight: normal;
     font-style: italic;
 
@@ -171,7 +396,7 @@ section > h2 {
 
 
 /* =========================================
-   DOCUMENT VIEWERS
+   DOCUMENT GROUPS
 ========================================= */
 
 .document-group,
@@ -183,7 +408,6 @@ section > h2 {
     max-width: 1050px;
 
     margin: 50px auto 65px;
-
     padding: 12px;
 
     background:
@@ -210,25 +434,41 @@ section > h2 {
 
     border: 1px solid #3b2a1c;
 
-    background: #211811;
+    background-color: #211811;
 }
 
 
 /* =========================================
-   TEXT AROUND DOCUMENTS
+   DOCUMENT CAPTIONS
+========================================= */
+
+.document-caption {
+    color: #a98a65;
+
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9rem;
+
+    margin-top: 18px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   STORY TEXT WITHIN VOLUMES
 ========================================= */
 
 .volume-section .story {
     max-width: 1050px;
+
     margin: 40px auto;
 
     color: #c5b79f;
     line-height: 2.1;
 }
 
-/* Optional side-by-side document layout.
-   Add this class to a document group only
-   when you want text to wrap beside it. */
+
+/* Optional smaller document layout */
 
 .document-group.narrow {
     width: 55%;
@@ -252,14 +492,15 @@ section > h2 {
 
 .quote {
     max-width: 950px;
-    margin: 55px auto;
-
-    padding: 30px 40px;
 
     color: #c4a47c;
 
+    font-style: italic;
     font-size: 1.1rem;
     line-height: 2;
+
+    padding: 30px 40px;
+    margin: 55px auto;
 
     background:
         linear-gradient(
@@ -292,9 +533,11 @@ section > hr {
 ========================================= */
 
 .closing-note {
-    max-width: 1100px;
-    margin: 100px auto 50px;
+    clear: both;
 
+    max-width: 1100px;
+
+    margin: 100px auto 50px;
     padding: 65px;
 
     background:
@@ -311,6 +554,177 @@ section > hr {
         0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
+.closing-note h2 {
+    color: #d2b58b;
+
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.signature {
+    text-align: right;
+
+    color: #b99a72;
+    font-style: italic;
+
+    margin-top: 30px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    clear: both;
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    background-color: #100c0a;
+    border-top: 2px solid #674b32;
+}
+
+footer p {
+    color: #998267;
+
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+
+/* =========================================
+   CURSOR LIGHT
+========================================= */
+
+.cursor-glow {
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(185, 135, 82, 0.09),
+        transparent 70%
+    );
+
+    pointer-events: none;
+    user-select: none;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 9999;
+}
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   FLOATING PAGES
+========================================= */
+
+.floating-page {
+    position: fixed;
+
+    bottom: -60px;
+
+    color: #c5a77d;
+
+    font-family: Georgia, serif;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 0;
+
+    animation: pageFloat linear forwards;
+
+    text-shadow:
+        0 0 10px rgba(194, 151, 100, 0.3);
+}
+
+@keyframes pageFloat {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.55;
+    }
+
+    85% {
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(120deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   READING PROGRESS BAR
+========================================= */
+
+.reading-progress {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    height: 3px;
+    width: 0%;
+
+    background: linear-gradient(
+        to right,
+        #69472d,
+        #d3ad7b,
+        #a77b4f
+    );
+
+    box-shadow:
+        0 0 10px rgba(197, 151, 98, 0.5);
+
+    z-index: 10000;
+}
+
+
+/* =========================================
+   KEEP CONTENT ABOVE EFFECTS
+========================================= */
+
+header,
+section,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
 
 /* =========================================
    RESPONSIVE DESIGN
@@ -318,12 +732,25 @@ section > hr {
 
 @media (max-width: 768px) {
 
+    header {
+        min-height: 300px;
+        padding: 80px 20px;
+    }
+
+    header h1 {
+        letter-spacing: 2px;
+    }
+
     section {
         padding: 45px 20px;
     }
 
     .archive-index {
         padding: 25px;
+    }
+
+    .archive-entry {
+        padding: 22px;
     }
 
     .volume-section {
@@ -357,7 +784,72 @@ section > hr {
         text-align: left;
     }
 
+    .quote {
+        padding: 25px;
+    }
+
     .closing-note {
         padding: 30px 22px;
+    }
+
+    .cursor-glow {
+        display: none;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 480px) {
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .archive-index {
+        padding: 20px 15px;
+    }
+
+    .archive-entry h3 {
+        font-size: 1.15rem;
+    }
+
+    .volume-section {
+        padding: 25px 15px;
+    }
+
+    .document-group {
+        padding: 7px;
+    }
+
+    .document-group iframe {
+        height: 450px;
+    }
+
+    .closing-note {
+        padding: 25px 18px;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }
