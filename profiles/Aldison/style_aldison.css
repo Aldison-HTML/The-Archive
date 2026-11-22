@@ -1,3 +1,4 @@
+
 :root {
     --background: #171614;
     --surface: #211D19;
@@ -9,6 +10,10 @@
     --abyss-darkness: 0;
 }
 
+/* =====================================
+   GLOBAL SETTINGS
+===================================== */
+
 * {
     box-sizing: border-box;
 }
@@ -19,46 +24,53 @@ html {
 }
 
 body {
+    position: relative;
+    isolation: isolate;
+
     margin: 0;
     padding: 0;
+
     background-color: var(--background);
+
     background-image:
         radial-gradient(
             ellipse at 50% 0%,
             rgba(137, 107, 63, 0.13),
             transparent 65%
         );
+
     color: var(--text);
     font-family: 'Lora', serif;
     line-height: 1.8;
 }
 
-body {
-    position: relative;
-}
+/* =====================================
+   ABYSS DARKENING OVERLAY
+===================================== */
 
 body::before {
     content: "";
+
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+
     width: 100%;
     height: 100%;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 45, 100, 0.25) 0%,
-        rgba(0, 25, 70, 0.45) 15%,
-        rgba(0, 12, 45, 0.72) 25%,
-        rgba(0, 5, 25, 0.90) 35%,
-        rgba(0, 0, 12, 0.97) 45%
+    background-color: rgba(
+        0,
+        4,
+        16,
+        calc(var(--abyss-darkness) * 0.88)
     );
 
-    opacity: 65%;
-
     pointer-events: none;
-    z-index: 9999;
+    z-index: 5;
 }
+
+/* =====================================
+   HEADER
+===================================== */
 
 header {
     position: relative;
@@ -95,6 +107,7 @@ header {
 
 header::before {
     content: "";
+
     position: absolute;
     inset: 0;
 
@@ -104,6 +117,7 @@ header::before {
             rgba(197, 160, 89, 0.13),
             transparent 65%
         );
+
     pointer-events: none;
 }
 
@@ -123,6 +137,7 @@ header h1 {
         0 3px 10px rgba(0, 0, 0, 0.8),
         0 0 25px rgba(197, 160, 89, 0.15);
 }
+
 header .curator {
     position: relative;
 
@@ -135,6 +150,10 @@ header .curator {
     margin: 0;
     letter-spacing: 1px;
 }
+
+/* =====================================
+   MAIN SECTION
+===================================== */
 
 section {
     width: 100%;
@@ -157,6 +176,7 @@ section {
     box-shadow:
         0 0 60px rgba(0, 0, 0, 0.3);
 }
+
 section h2 {
     font-family: 'Lora', serif;
     font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -172,6 +192,26 @@ section h2 {
     text-shadow:
         0 2px 12px rgba(197, 160, 89, 0.12);
 }
+
+section > p {
+    max-width: 650px;
+
+    font-family: 'Lora', serif;
+    font-size: 1.08rem;
+
+    color: var(--text);
+
+    margin: 0 0 35px;
+    text-align: justify;
+}
+
+.story {
+    max-width: none;
+}
+
+/* =====================================
+   DIVIDERS
+===================================== */
 
 hr {
     border: none;
@@ -189,25 +229,14 @@ hr {
     margin: 45px 0;
 }
 
-section > p {
-    max-width: 650px;
-
-    font-family: 'Lora', serif;
-    font-size: 1.08rem;
-
-    color: var(--text);
-
-    margin: 0 0 35px;
-    text-align: justify;
-}
-
-.story {
-    max-width:none;
-}
+/* =====================================
+   ARCHIVE INDEX
+===================================== */
 
 .archive-index {
     margin: 100px auto;
     padding: 55px 7%;
+
     width: 85%;
     max-width: 1300px;
 
@@ -217,6 +246,7 @@ section > p {
             rgba(25, 21, 17, 0.96)
         ),
         url("ink.jpeg");
+
     background-position: center;
     background-size: cover;
 
@@ -241,6 +271,7 @@ section > p {
     font-style: italic;
     margin-bottom: 40px;
 }
+
 .archive-link {
     display: block;
 
@@ -256,11 +287,24 @@ section > p {
 
     border-bottom: 1px solid rgba(197, 160, 89, 0.35);
 
-    transition: background 0.25s ease;
+    transition:
+        background 0.5s ease,
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
 }
 
 .archive-entry:hover {
     background: rgba(197, 160, 89, 0.09);
+    transform: translateY(-4px);
+}
+
+.archive-entry.ink-awakened {
+    border-left: 2px solid #619ba0;
+
+    box-shadow:
+        0 0 18px rgba(40, 115, 125, 0.2),
+        inset 0 0 20px rgba(25, 90, 100, 0.1);
 }
 
 .archive-entry span {
@@ -289,6 +333,10 @@ section > p {
     line-height: 1.7;
 }
 
+/* =====================================
+   DOCUMENT GROUPS
+===================================== */
+
 .document-group {
     display: flex;
     flex-direction: column;
@@ -310,6 +358,10 @@ section > p {
     margin-right: 0;
 }
 
+/* =====================================
+   DOCUMENT QUOTES
+===================================== */
+
 .document-group .quote {
     width: 100%;
     max-width: none;
@@ -328,15 +380,17 @@ section > p {
 
 .document-group.left .quote {
     text-align: left;
-
     border-left: 2px solid var(--muted-gold);
 }
 
 .document-group.right .quote {
     text-align: right;
-
     border-right: 2px solid var(--muted-gold);
 }
+
+/* =====================================
+   PDF DOCUMENTS
+===================================== */
 
 .document-group iframe {
     display: block;
@@ -354,7 +408,24 @@ section > p {
     box-shadow:
         0 10px 35px rgba(0, 0, 0, 0.4),
         0 0 20px rgba(197, 160, 89, 0.06);
+
+    transition:
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
 }
+
+.document-group iframe.leviathan-awakened {
+    border-color: #52868c;
+
+    box-shadow:
+        0 0 10px rgba(45, 120, 130, 0.4),
+        0 0 30px rgba(25, 90, 105, 0.25),
+        0 15px 35px rgba(0, 0, 0, 0.7);
+}
+
+/* =====================================
+   IMAGES
+===================================== */
 
 section img {
     display: block;
@@ -385,6 +456,10 @@ figcaption {
     border-top: 1px solid var(--muted-gold);
 }
 
+/* =====================================
+   CLOSING NOTE
+===================================== */
+
 .closing-note {
     max-width: 850px;
 
@@ -404,7 +479,6 @@ figcaption {
 
     box-shadow:
         0 10px 35px rgba(0, 0, 0, 0.3);
-
 }
 
 .closing-note h2 {
@@ -437,9 +511,13 @@ figcaption {
     margin-top: 35px;
 }
 
+/* =====================================
+   FOOTER
+===================================== */
+
 footer {
     padding: 50px 20px;
-    margin-top: 0px;
+    margin-top: 0;
 
     text-align: center;
 
@@ -467,10 +545,188 @@ footer p:first-child {
     letter-spacing: 3px;
 }
 
+/* =====================================
+   BACK NAVIGATION
+===================================== */
+
+.back-navigation {
+    display: flex;
+    justify-content: center;
+
+    margin: 35px 0 50px;
+}
+
+.back-navigation a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 24px;
+
+    background-color: #1C1C1E;
+    color: #F8F7F4;
+
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    text-decoration: none;
+
+    border: 1px solid #3A3A3E;
+    border-left: 5px solid #C5A059;
+    border-radius: 6px;
+
+    box-shadow: 0 4px 12px rgba(28, 28, 30, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.back-navigation a:hover {
+    transform: translateY(-4px);
+
+    border-color: #C5A059;
+    border-left-color: #8C3B2B;
+
+    background-color: #302117;
+
+    box-shadow: 0 10px 22px rgba(28, 28, 30, 0.25);
+}
+
+/* =====================================
+   INK CURSOR GLOW
+===================================== */
+
+.ink-cursor {
+    position: fixed;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(35, 110, 120, 0.13),
+        rgba(15, 65, 75, 0.05) 45%,
+        transparent 70%
+    );
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* =====================================
+   FLOATING INK PARTICLES
+===================================== */
+
+.ink-particle {
+    position: fixed;
+
+    bottom: -50px;
+
+    color: #619ba0;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 6;
+
+    text-shadow:
+        0 0 8px rgba(45, 130, 140, 0.5),
+        0 0 18px rgba(25, 90, 100, 0.3);
+
+    animation: inkFloat linear forwards;
+}
+
+@keyframes inkFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(-55vh) rotate(100deg);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(200deg);
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   MANUSCRIPT REVEAL
+===================================== */
+
+.ink-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.ink-reveal.ink-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================================
+   ABYSS PROGRESS BAR
+===================================== */
+
+.ink-progress {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 0%;
+    height: 3px;
+
+    background: linear-gradient(
+        to right,
+        #183e46,
+        #397b83,
+        #82b8b5
+    );
+
+    box-shadow:
+        0 0 12px rgba(65, 145, 150, 0.6);
+
+    z-index: 10001;
+}
+
+/* =====================================
+   RETURN TO SURFACE
+===================================== */
+
+body.returning-surface .ink-cursor {
+    background: radial-gradient(
+        circle,
+        rgba(80, 170, 175, 0.2),
+        transparent 70%
+    );
+}
+
+/* =====================================
+   TEXT SELECTION
+===================================== */
+
 ::selection {
     background: var(--gold);
     color: var(--background);
 }
+
+/* =====================================
+   SCROLLBAR
+===================================== */
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -486,6 +742,10 @@ footer p:first-child {
     border: 2px solid var(--background);
     border-radius: 10px;
 }
+
+/* =====================================
+   MOBILE ADJUSTMENTS
+===================================== */
 
 @media (max-width: 768px) {
 
@@ -508,7 +768,7 @@ footer p:first-child {
         padding: 35px 6%;
         margin: 65px auto;
     }
-    
+
     .archive-entry {
         padding: 18px;
     }
@@ -543,239 +803,20 @@ footer p:first-child {
         margin-top: 60px;
     }
 
-}
-
-.back-navigation {
-    display: flex;
-    justify-content: center;
-    margin: 35px 0 50px;
-}
-
-.back-navigation a {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 24px;
-
-    background-color: #1C1C1E;
-    color: #F8F7F4;
-
-    font-family: 'Lora', serif;
-    font-size: 1rem;
-    text-decoration: none;
-
-    border: 1px solid #3A3A3E;
-    border-left: 5px solid #C5A059;
-    border-radius: 6px;
-
-    box-shadow: 0 4px 12px rgba(28, 28, 30, 0.15);
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.back-navigation a:hover {
-    transform: translateY(-4px);
-    border-color: #C5A059;
-    border-left-color: #8C3B2B;
-    background-color: #302117;
-
-    box-shadow: 0 10px 22px rgba(28, 28, 30, 0.25);
-}
-
-/* =====================================
-   INK CURSOR GLOW
-===================================== */
-
-.ink-cursor {
-    position: fixed;
-
-    width: 320px;
-    height: 320px;
-
-    border-radius: 50%;
-
-    background: radial-gradient(
-        circle,
-        rgba(35, 110, 120, 0.13),
-        rgba(15, 65, 75, 0.05) 45%,
-        transparent 70%
-    );
-
-    transform: translate(-50%, -50%);
-
-    pointer-events: none;
-    z-index: 9998;
-}
-
-
-/* =====================================
-   FLOATING INK PARTICLES
-===================================== */
-
-.ink-particle {
-    position: fixed;
-
-    bottom: -50px;
-
-    color: #619ba0;
-
-    pointer-events: none;
-    user-select: none;
-
-    z-index: 1;
-
-    text-shadow:
-        0 0 8px rgba(45, 130, 140, 0.5),
-        0 0 18px rgba(25, 90, 100, 0.3);
-
-    animation: inkFloat linear forwards;
-}
-
-@keyframes inkFloat {
-
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-55vh) rotate(100deg);
-    }
-
-    100% {
-        transform: translateY(-110vh) rotate(200deg);
-        opacity: 0;
-    }
-
-}
-
-
-/* =====================================
-   MANUSCRIPT REVEAL
-===================================== */
-
-.ink-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
-}
-
-.ink-reveal.ink-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* =====================================
-   ABYSS PROGRESS BAR
-===================================== */
-
-.ink-progress {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 0%;
-    height: 3px;
-
-    background: linear-gradient(
-        to right,
-        #183e46,
-        #397b83,
-        #82b8b5
-    );
-
-    box-shadow:
-        0 0 12px rgba(65, 145, 150, 0.6);
-
-    z-index: 10001;
-}
-
-
-/* =====================================
-   ARCHIVE ENTRY HOVER
-===================================== */
-
-.archive-entry {
-    transition:
-        background 0.5s ease,
-        transform 0.5s ease,
-        border-color 0.5s ease,
-        box-shadow 0.5s ease;
-}
-
-.archive-entry.ink-awakened {
-
-    border-left-color: #619ba0;
-
-    box-shadow:
-        0 0 18px rgba(40, 115, 125, 0.2),
-        inset 0 0 20px rgba(25, 90, 100, 0.1);
-
-}
-
-
-/* =====================================
-   LEVIATHAN DOCUMENT GLOW
-===================================== */
-
-.document-group iframe {
-    transition:
-        box-shadow 0.6s ease,
-        border-color 0.6s ease;
-}
-
-.document-group iframe.leviathan-awakened {
-
-    border-color: #52868c;
-
-    box-shadow:
-        0 0 10px rgba(45, 120, 130, 0.4),
-        0 0 30px rgba(25, 90, 105, 0.25),
-        0 15px 35px rgba(0, 0, 0, 0.7);
-
-}
-
-
-/* =====================================
-   RETURN TO SURFACE
-===================================== */
-
-body.returning-surface .ink-cursor {
-
-    background: radial-gradient(
-        circle,
-        rgba(80, 170, 175, 0.2),
-        transparent 70%
-    );
-
-}
-
-
-/* =====================================
-   MOBILE ADJUSTMENTS
-===================================== */
-
-@media (max-width: 768px) {
-
     .ink-cursor {
         display: none;
     }
-
 }
-
 
 /* =====================================
    REDUCED MOTION
 ===================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
 
     .ink-reveal {
         opacity: 1;
@@ -785,6 +826,12 @@ body.returning-surface .ink-cursor {
 
     .ink-particle {
         display: none;
+        animation: none;
     }
 
+    .archive-entry,
+    .document-group iframe,
+    .back-navigation a {
+        transition: none;
+    }
 }
