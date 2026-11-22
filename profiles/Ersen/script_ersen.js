@@ -108,4 +108,42 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", updateProgress);
     updateProgress();
 
+
+    // =====================================
+    // 6. CLICK SPARKLE BURST EFFECT
+    // =====================================
+
+    const sparkleGlyphs = ["✦", "✧", "⚝", "★"];
+
+    document.addEventListener("click", (e) => {
+        for (let i = 0; i < 8; i++) {
+            const sparkle = document.createElement("span");
+            sparkle.classList.add("arcane-rune");
+            
+            sparkle.textContent = sparkleGlyphs[Math.floor(Math.random() * sparkleGlyphs.length)];
+            
+            sparkle.style.left = `${e.clientX}px`;
+            sparkle.style.top = `${e.clientY}px`;
+            sparkle.style.position = "fixed";
+            sparkle.style.zIndex = "10001";
+            sparkle.style.fontSize = (10 + Math.random() * 10) + "px";
+
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 40 + Math.random() * 70;
+            const dx = Math.cos(angle) * distance;
+            const dy = Math.sin(angle) * distance;
+
+            sparkle.style.setProperty("--dx", `${dx}px`);
+            sparkle.style.setProperty("--dy", `${dy}px`);
+            
+            sparkle.style.animation = `clickBurst 0.6s ease-out forwards`;
+
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 600);
+        }
+    });
+
 });
