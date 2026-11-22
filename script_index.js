@@ -112,3 +112,34 @@ setInterval(() => {
     deleteCurrentBooks();
     scatterBooks(randomInt(25, 35));
 }, 1000);
+
+// 3. Random atmospheric screen flicker
+
+const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+function scheduleFlicker() {
+
+    const delay = randomInt(3500, 7500);
+
+    setTimeout(() => {
+
+        if (!document.hidden) {
+
+            document.body.classList.add("page-flicker");
+
+            setTimeout(() => {
+                document.body.classList.remove("page-flicker");
+            }, 220);
+
+        }
+
+        scheduleFlicker();
+
+    }, delay);
+}
+
+if (!prefersReducedMotion) {
+    scheduleFlicker();
+}
