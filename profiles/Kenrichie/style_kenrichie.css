@@ -1,3 +1,28 @@
+/* =========================================
+   COLOR PALETTE VARIABLES (BLUE & GREEN)
+========================================= */
+
+:root {
+    /* Backgrounds */
+    --bg-main: #0b1124;          /* Deep midnight navy */
+    --bg-card-top: #12213d;      /* Slate navy */
+    --bg-card-bottom: #091322;   /* Dark abyss blue */
+    --bg-entry: #0f2438;         /* Deep ocean blue-teal */
+    --bg-entry-hover: #143347;   /* Highlighted teal-navy */
+
+    /* Text Colors (High Contrast) */
+    --text-primary: #e2f1f8;     /* Crisp ice-white for long reading */
+    --text-secondary: #98c5db;   /* Soft sky-blue for quotes/captions */
+    --text-green-bright: #4ade80;/* Vibrant emerald for headings */
+    --text-green-mint: #a7f3d0;  /* Soft mint for subheadings/labels */
+
+    /* Accents & Borders */
+    --accent-emerald: #10b981;   /* Rich emerald green */
+    --accent-teal: #14b8a6;      /* Bright teal */
+    --border-subtle: rgba(56, 189, 248, 0.22);
+    --border-green: rgba(16, 185, 129, 0.45);
+}
+
 
 /* =========================================
    GENERAL SETTINGS
@@ -15,8 +40,8 @@ html {
 }
 
 body {
-    background-color: rgba(110, 120, 247, 0.5);
-    color: #79cbdf;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     font-family: 'Century Gothic', Futura, 'Trebuchet MS', Arial, sans-serif;
     line-height: 1.8;
     overflow-x: hidden;
@@ -34,15 +59,15 @@ header {
 
     background:
         linear-gradient(
-            rgba(12, 9, 8, 0.55),
-            rgba(18, 13, 10, 0.95)
+            rgba(9, 17, 36, 0.65),
+            rgba(11, 17, 36, 0.96)
         ),
         url("laby.webp");
 
     background-size: cover;
     background-position: center;
 
-    border-bottom: 2px solid #16913b;
+    border-bottom: 2px solid var(--accent-emerald);
 
     position: relative;
     overflow: hidden;
@@ -57,7 +82,7 @@ header::after {
         radial-gradient(
             ellipse at center,
             transparent 15%,
-            rgba(0, 0, 0, 0.55) 100%
+            rgba(5, 10, 22, 0.65) 100%
         );
 
     pointer-events: none;
@@ -68,14 +93,14 @@ header h1 {
     z-index: 1;
 
     font-size: clamp(2.5rem, 6vw, 4.8rem);
-    color: #16913b;
+    color: var(--text-green-bright);
 
     letter-spacing: 5px;
     text-transform: uppercase;
 
     text-shadow:
-        0 0 15px rgba(173, 125, 72, 0.25),
-        2px 3px 5px #000;
+        0 0 20px rgba(16, 185, 129, 0.35),
+        2px 3px 6px #040814;
 }
 
 .curator {
@@ -84,7 +109,7 @@ header h1 {
 
     margin-top: 15px;
 
-    color: #16913b;
+    color: var(--text-green-mint);
     font-style: italic;
     font-size: 1.1rem;
     letter-spacing: 2px;
@@ -105,7 +130,7 @@ section > h2 {
     text-align: center;
 
     font-size: 2.2rem;
-    color: #68e18c;
+    color: var(--text-green-bright);
 
     margin-bottom: 35px;
     letter-spacing: 2px;
@@ -122,7 +147,7 @@ section > h2 {
 
     margin: 40px auto 65px;
 
-    color: #47e5b3;
+    color: var(--text-primary);
     font-size: 1.08rem;
     line-height: 2.1;
 
@@ -144,9 +169,9 @@ hr {
     background: linear-gradient(
         to right,
         transparent,
-        #62462e,
-        #b18a5d,
-        #62462e,
+        #1e40af,
+        var(--accent-emerald),
+        #1e40af,
         transparent
     );
 }
@@ -162,10 +187,11 @@ hr {
 }
 
 .back-navigation a {
-    color: #16913b4e;
+    color: var(--text-green-bright);
 
     text-decoration: none;
     font-size: 0.95rem;
+    font-weight: 600;
     letter-spacing: 1px;
 
     transition:
@@ -174,7 +200,7 @@ hr {
 }
 
 .back-navigation a:hover {
-    color: #16913b4e;
+    color: var(--text-green-mint);
     letter-spacing: 2px;
 }
 
@@ -192,19 +218,19 @@ hr {
     background:
         linear-gradient(
             145deg,
-            rgba(83, 55, 34, 0.3),
-            rgba(24, 18, 14, 0.95)
+            var(--bg-card-top),
+            var(--bg-card-bottom)
         );
 
-    border: 1px solid #674b32;
+    border: 1px solid var(--border-green);
 
     box-shadow:
-        inset 0 0 45px rgba(0, 0, 0, 0.65),
-        0 15px 40px rgba(0, 0, 0, 0.4);
+        inset 0 0 45px rgba(4, 9, 20, 0.7),
+        0 15px 40px rgba(0, 0, 0, 0.45);
 }
 
 .archive-index > h2 {
-    color: #bbffc44e;
+    color: var(--text-green-bright);
     font-size: 2rem;
 
     margin-bottom: 10px;
@@ -212,7 +238,7 @@ hr {
 }
 
 .archive-index > p {
-    color: #bbffc44e;
+    color: var(--text-secondary);
 
     margin-bottom: 35px;
     text-align: center;
@@ -235,12 +261,12 @@ hr {
     background:
         linear-gradient(
             100deg,
-            rgba(67, 43, 29, 0.5),
-            rgba(17, 14, 12, 0.85)
+            var(--bg-entry),
+            rgba(10, 20, 38, 0.92)
         );
 
-    border: 1px solid rgba(55, 120, 62, 0.35);
-    border-left: 4px solid #387950;
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent-emerald);
 
     transition:
         background 0.4s ease,
@@ -259,7 +285,7 @@ hr {
     transform: translateY(-50%);
 
     font-size: 3rem;
-    color: rgba(101, 110, 190, 0.15);
+    color: rgba(74, 222, 128, 0.14);
 
     transition:
         color 0.4s ease,
@@ -270,37 +296,38 @@ hr {
     background:
         linear-gradient(
             100deg,
-            rgba(100, 65, 40, 0.55),
-            rgba(35, 24, 17, 0.95)
+            var(--bg-entry-hover),
+            rgba(13, 28, 52, 0.96)
         );
 
-    border-left-color: #18532a4e;
+    border-left-color: var(--text-green-bright);
 
     transform: translateX(10px);
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.35);
+        0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .archive-entry:hover::after {
-    color: #97ffb64e;
+    color: rgba(74, 222, 128, 0.35);
     transform: translateY(-50%) rotate(20deg);
 }
 
 .archive-entry span {
-    color: #97ffb64e;
+    color: var(--text-green-bright);
     font-size: 0.85rem;
+    font-weight: 600;
     letter-spacing: 2px;
 }
 
 .archive-entry h3 {
-    color: #97ffb64e;
+    color: var(--text-green-mint);
     font-size: 1.4rem;
     margin: 5px 0;
 }
 
 .archive-entry p {
-    color: #97ffb64e;
+    color: var(--text-primary);
     font-size: 0.95rem;
 }
 
@@ -310,17 +337,17 @@ hr {
 ========================================= */
 
 .archive-entry.active {
-    border-left-color: #18532a4e;
+    border-left-color: var(--text-green-bright);
 
     background:
         linear-gradient(
             100deg,
-            rgba(107, 73, 45, 0.4),
-            rgba(30, 22, 17, 0.9)
+            rgba(20, 65, 78, 0.65),
+            rgba(12, 25, 48, 0.95)
         );
 
     box-shadow:
-        inset 0 0 20px rgba(180, 135, 80, 0.08);
+        inset 0 0 20px rgba(16, 185, 129, 0.15);
 }
 
 
@@ -339,20 +366,18 @@ hr {
     background:
         linear-gradient(
             145deg,
-            rgba(49, 35, 25, 0.55),
-            rgba(20, 15, 12, 0.95)
+            var(--bg-card-top),
+            var(--bg-card-bottom)
         );
 
-    border: 1px solid rgba(132, 98, 65, 0.4);
+    border: 1px solid var(--border-subtle);
 
     box-shadow:
-        inset 0 0 50px rgba(0, 0, 0, 0.55),
-        0 20px 55px rgba(0, 0, 0, 0.3);
+        inset 0 0 50px rgba(4, 9, 20, 0.65),
+        0 20px 55px rgba(0, 0, 0, 0.4);
 
     overflow: hidden;
 }
-
-/* Decorative upper edge */
 
 .volume-section::before {
     content: "";
@@ -367,17 +392,15 @@ hr {
     background: linear-gradient(
         to right,
         transparent,
-        #18532a4e,
+        var(--accent-emerald),
         transparent
     );
 }
 
-/* Volume headings */
-
 .volume-section > h2 {
     text-align: left;
 
-    color: #bbffc44e;
+    color: var(--text-green-bright);
     font-size: 2rem;
 
     margin-bottom: 15px;
@@ -385,7 +408,7 @@ hr {
 }
 
 .volume-section > h3 {
-    color: #bbffc44e;
+    color: var(--text-green-mint);
 
     font-size: 1.1rem;
     font-weight: normal;
@@ -413,16 +436,16 @@ hr {
     background:
         linear-gradient(
             145deg,
-            #3a3871,
-            #1c1a58 35%,
-            rgb(22, 27, 57)
+            #1e3a6e,
+            #13264c 35%,
+            #0d1933
         );
 
-    border: 1px solid rgb(20, 25, 55);
+    border: 1px solid var(--border-green);
 
     box-shadow:
-        0 0 0 5px rgba(20, 25, 55, 0.8),
-        0 0 0 6px rgba(15, 20, 50, 0.35),
+        0 0 0 5px rgba(13, 25, 51, 0.85),
+        0 0 0 6px rgba(16, 185, 129, 0.25),
         0 25px 55px rgba(0, 0, 0, 0.75);
 }
 
@@ -432,43 +455,10 @@ hr {
     width: 100%;
     height: 750px;
 
-    border: 1px solid rgb(20, 25, 55);
+    border: 1px solid #0d1933;
 
-    background-color: rgb(33, 42, 88);
+    background-color: #162a52;
 }
-
-
-/* =========================================
-   DOCUMENT CAPTIONS
-========================================= */
-
-.document-caption {
-    color: rgb(33, 54, 110);
-
-    text-align: center;
-    font-style: italic;
-    font-size: 0.9rem;
-
-    margin-top: 18px;
-    letter-spacing: 1px;
-}
-
-
-/* =========================================
-   STORY TEXT WITHIN VOLUMES
-========================================= */
-
-.volume-section .story {
-    max-width: 1050px;
-
-    margin: 40px auto;
-
-    color: #5b7db1;
-    line-height: 2.1;
-}
-
-
-/* Optional smaller document layout */
 
 .document-group.narrow {
     width: 55%;
@@ -487,13 +477,43 @@ hr {
 
 
 /* =========================================
+   DOCUMENT CAPTIONS
+========================================= */
+
+.document-caption {
+    color: var(--text-green-mint);
+
+    text-align: center;
+    font-style: italic;
+    font-size: 0.92rem;
+
+    margin-top: 18px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   STORY TEXT WITHIN VOLUMES
+========================================= */
+
+.volume-section .story {
+    max-width: 1050px;
+
+    margin: 40px auto;
+
+    color: var(--text-primary);
+    line-height: 2.1;
+}
+
+
+/* =========================================
    QUOTES
 ========================================= */
 
 .quote {
     max-width: 950px;
 
-    color: #5b7db1;
+    color: var(--text-green-mint);
 
     font-style: italic;
     font-size: 1.1rem;
@@ -505,14 +525,12 @@ hr {
     background:
         linear-gradient(
             100deg,
-            rgba(103, 70, 43, 0.2),
-            rgba(30, 21, 15, 0.5)
+            rgba(16, 185, 129, 0.12),
+            rgba(15, 36, 56, 0.65)
         );
 
-    border-left: 3px solid #a17b50;
+    border-left: 3px solid var(--accent-emerald);
 }
-
-
 /* =========================================
    CLEAR FLOATS
 ========================================= */
@@ -543,19 +561,19 @@ section > hr {
     background:
         linear-gradient(
             135deg,
-            rgba(80, 53, 34, 0.4),
-            rgba(20, 15, 12, 0.98)
+            var(--bg-card-top),
+            var(--bg-card-bottom)
         );
 
-    border: 1px solid #1a1746;
+    border: 1px solid var(--border-green);
 
     box-shadow:
-        inset 0 0 45px rgba(0, 0, 0, 0.65),
-        0 15px 40px rgba(0, 0, 0, 0.35);
+        inset 0 0 45px rgba(4, 9, 20, 0.7),
+        0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .closing-note h2 {
-    color: #5b7db1;
+    color: var(--text-green-bright);
 
     font-size: 1.8rem;
     margin-bottom: 20px;
@@ -564,7 +582,7 @@ section > hr {
 .signature {
     text-align: right;
 
-    color: #5b7db1;
+    color: var(--text-green-mint);
     font-style: italic;
 
     margin-top: 30px;
@@ -582,12 +600,12 @@ footer {
 
     text-align: center;
 
-    background-color: #110f3a;
-    border-top: 2px solid #1b1852;
+    background-color: #070d1c;
+    border-top: 2px solid var(--accent-emerald);
 }
 
 footer p {
-    color: #110f3a;
+    color: var(--text-secondary);
 
     font-size: 0.9rem;
     margin: 5px 0;
@@ -608,7 +626,7 @@ footer p {
 
     background: radial-gradient(
         circle,
-        rgba(111, 183, 227, 0.1),
+        rgba(45, 212, 191, 0.12),
         transparent 70%
     );
 
@@ -650,7 +668,7 @@ footer p {
 
     bottom: -60px;
 
-    color: #110f3a;
+    color: rgba(167, 243, 208, 0.25);
 
     font-family: Georgia, serif;
 
@@ -662,7 +680,7 @@ footer p {
     animation: pageFloat linear forwards;
 
     text-shadow:
-        0 0 10px rgba(194, 151, 100, 0.3);
+        0 0 10px rgba(16, 185, 129, 0.35);
 }
 
 @keyframes pageFloat {
@@ -702,13 +720,13 @@ footer p {
 
     background: linear-gradient(
         to right,
-        #69472d,
-        #d3ad7b,
-        #a77b4f
+        #2563eb,
+        var(--accent-teal),
+        var(--text-green-bright)
     );
 
     box-shadow:
-        0 0 10px rgba(197, 151, 98, 0.5);
+        0 0 10px rgba(52, 211, 153, 0.6);
 
     z-index: 10000;
 }
