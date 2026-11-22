@@ -1,30 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =====================================
-    // 1. MAGICAL CURSOR GLOW
-    // =====================================
-
-    const cursorGlow = document.createElement("div");
-    cursorGlow.classList.add("cursor-glow");
-    document.body.appendChild(cursorGlow);
-
-    document.addEventListener("mousemove", (e) => {
-        cursorGlow.style.left = `${e.clientX}px`;
-        cursorGlow.style.top = `${e.clientY}px`;
-    });
-
-
-    // =====================================
-    // 2. SCROLL REVEAL
+    // 1. SCROLL REVEAL
     // =====================================
 
     const revealElements = document.querySelectorAll(
         ".story, .document-group, .archive-entry, .closing-note, .codex-progress-box"
     );
 
-    revealElements.forEach(element => {
-        element.classList.add("reveal");
-    });
+    revealElements.forEach(element => element.classList.add("reveal"));
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -33,66 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.12
-    });
+    }, { threshold: 0.12 });
 
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
+    revealElements.forEach(element => revealObserver.observe(element));
 
 
     // =====================================
-    // 3. MINECRAFT ENCHANTMENT TABLE GLYPHS
-    // =====================================
-
-    const enchantmentSymbols = [
-        "ᚠ", "ᚡ", "ᚢ", "ᚣ", "ᚤ", "ᚥ", "ᚦ", "ᚧ", 
-        "ᚨ", "ᚩ", "ᚪ", "ᚫ", "ᚬ", "ᚭ", "ᚮ", "ᚯ", 
-        "ᚰ", "ᚱ", "ᚲ", "ᚳ", "ᚴ", "ᚵ", "ᚶ", "ᚷ", 
-        "ᚸ", "ᚹ", "ᚺ", "ᚻ", "ᚼ", "ᚽ", "ᚾ", "ᚿ",
-        "⡎", "⡜", "⣠", "⣷", "⣾", "⣻", "⣽", "⣾"
-    ];
-
-    function createRune() {
-        const rune = document.createElement("span");
-        rune.classList.add("arcane-rune");
-
-        rune.textContent = enchantmentSymbols[Math.floor(Math.random() * enchantmentSymbols.length)];
-        rune.style.left = Math.random() * 100 + "vw";
-        rune.style.animationDuration = (10 + Math.random() * 6) + "s";
-        rune.style.fontSize = (12 + Math.random() * 12) + "px";
-
-        document.body.appendChild(rune);
-
-        setTimeout(() => {
-            rune.remove();
-        }, 16000);
-    }
-
-    // Increased interval from 800ms to 2000ms so it doesn't overload the CPU
-    setInterval(createRune, 2000);
-
-
-    // =====================================
-    // 4. GRIMOIRE HOVER EFFECT
-    // =====================================
-
-    const archiveEntries = document.querySelectorAll(".archive-entry");
-
-    archiveEntries.forEach(entry => {
-        entry.addEventListener("mouseenter", () => {
-            entry.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.2)";
-        });
-
-        entry.addEventListener("mouseleave", () => {
-            entry.style.boxShadow = "none";
-        });
-    });
-
-
-    // =====================================
-    // 5. READING PROGRESS BAR
+    // 2. READING PROGRESS BAR
     // =====================================
 
     const progressBar = document.createElement("div");
@@ -111,41 +42,208 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =====================================
-    // 6. CLICK SPARKLE BURST EFFECT
+    // 3. INTERACTIVE MAGIC CANVAS (60 FPS, ZERO LAG)
     // =====================================
 
-    const sparkleGlyphs = ["✦", "✧", "⚝", "★"];
+    const canvas = document.getElementById("arcane-canvas");
+    const ctx = canvas.getContext("2d");
 
-    document.addEventListener("click", (e) => {
-        // Reduced particle count from 8 to 4 for buttery-smooth performance
-        for (let i = 0; i < 4; i++) {
-            const sparkle = document.createElement("span");
-            sparkle.classList.add("arcane-rune");
-            
-            sparkle.textContent = sparkleGlyphs[Math.floor(Math.random() * sparkleGlyphs.length)];
-            
-            sparkle.style.left = `${e.clientX}px`;
-            sparkle.style.top = `${e.clientY}px`;
-            sparkle.style.position = "fixed";
-            sparkle.style.zIndex = "10001";
-            sparkle.style.fontSize = (10 + Math.random() * 8) + "px";
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
 
+    window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    // Track mouse position for interactive magic field
+    const mouse = { x: -1000, y: -1000 };
+    window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+    window.addEventListener("mouseleave", () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+    });
+
+    const runes = [
+        "ᚠ", "ᚢ", "ᚦ", "ᚨ", "ᚱ", "ᚲ", "ᚷ", "ᚹ", 
+        "ᚺ", "ᚾ", "ᛁ", "ᛃ", "ᛇ", "ᛈ", "ᛉ", "ᛊ", 
+        "ᛏ", "ᛒ", "ᛖ", "ᛗ", "ᛚ", "ᛜ", "ᛞ", "ᛟ"
+    ];
+
+    // Background floating enchantment runes
+    const ambientParticles = [];
+    const particleCount = Math.min(45, Math.floor(width / 30)); // Responsive count
+
+    class AmbientRune {
+        constructor() {
+            this.reset(true);
+        }
+
+        reset(initial = false) {
+            this.x = Math.random() * width;
+            this.y = initial ? Math.random() * height : height + 30;
+            this.vy = -(0.3 + Math.random() * 0.7); // Float upward
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.size = 11 + Math.random() * 10;
+            this.glyph = runes[Math.floor(Math.random() * runes.length)];
+            this.alpha = 0.15 + Math.random() * 0.45;
+            this.angle = Math.random() * Math.PI * 2;
+            this.spin = (Math.random() - 0.5) * 0.015;
+        }
+
+        update() {
+            // Interactive magnetic swirl & glow near cursor
+            const dx = this.x - mouse.x;
+            const dy = this.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const maxDist = 160;
+
+            if (dist < maxDist) {
+                const force = (maxDist - dist) / maxDist;
+                // Gentle swirling push around cursor
+                this.x += (dx / dist) * force * 2.2 - (dy / dist) * force * 1.2;
+                this.y += (dy / dist) * force * 2.2 + (dx / dist) * force * 1.2;
+                this.currentAlpha = Math.min(1, this.alpha + force * 0.7);
+            } else {
+                this.currentAlpha = this.alpha;
+            }
+
+            this.x += this.vx;
+            this.y += this.vy;
+            this.angle += this.spin;
+
+            if (this.y < -30 || this.x < -30 || this.x > width + 30) {
+                this.reset();
+            }
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle);
+            ctx.font = `${this.size}px serif`;
+            ctx.fillStyle = `rgba(243, 210, 102, ${this.currentAlpha})`;
+            ctx.shadowColor = "rgba(212, 175, 55, 0.8)";
+            ctx.shadowBlur = 8;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(this.glyph, 0, 0);
+            ctx.restore();
+        }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+        ambientParticles.push(new AmbientRune());
+    }
+
+    // =====================================
+    // 4. 360° RADIAL CLICK EXPLOSION PARTICLES
+    // =====================================
+
+    const burstParticles = [];
+    const burstSymbols = ["✦", "✧", "⚝", "★", "·"];
+
+    class BurstSparkle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            // True 360-degree random scatter
             const angle = Math.random() * Math.PI * 2;
-            const distance = 30 + Math.random() * 50;
-            const dx = Math.cos(angle) * distance;
-            const dy = Math.sin(angle) * distance;
+            const speed = 1.5 + Math.random() * 5.5;
+            this.vx = Math.cos(angle) * speed;
+            this.vy = Math.sin(angle) * speed;
+            this.friction = 0.94; // Slows down smoothly like real sparks
+            this.gravity = 0.04;  // Slight magical drift
+            this.alpha = 1;
+            this.decay = 0.018 + Math.random() * 0.02;
+            this.size = 10 + Math.random() * 10;
+            this.glyph = burstSymbols[Math.floor(Math.random() * burstSymbols.length)];
+            this.rotation = Math.random() * Math.PI * 2;
+            this.spin = (Math.random() - 0.5) * 0.15;
+        }
 
-            sparkle.style.setProperty("--dx", `${dx}px`);
-            sparkle.style.setProperty("--dy", `${dy}px`);
-            
-            sparkle.style.animation = `clickBurst 0.5s ease-out forwards`;
+        update() {
+            this.vx *= this.friction;
+            this.vy *= this.friction;
+            this.vy += this.gravity;
+            this.x += this.vx;
+            this.y += this.vy;
+            this.rotation += this.spin;
+            this.alpha -= this.decay;
+        }
 
-            document.body.appendChild(sparkle);
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.font = `${this.size}px serif`;
+            ctx.fillStyle = `rgba(255, 232, 133, ${Math.max(0, this.alpha)})`;
+            ctx.shadowColor = "rgba(243, 210, 102, 0.9)";
+            ctx.shadowBlur = 10;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(this.glyph, 0, 0);
+            ctx.restore();
+        }
+    }
 
-            setTimeout(() => {
-                sparkle.remove();
-            }, 500);
+    // Trigger 360° radial burst on click
+    window.addEventListener("click", (e) => {
+        for (let i = 0; i < 16; i++) {
+            burstParticles.push(new BurstSparkle(e.clientX, e.clientY));
         }
     });
+
+    // Main Animation Loop
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw subtle golden aura around cursor
+        if (mouse.x > 0 && mouse.y > 0) {
+            const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 180);
+            gradient.addColorStop(0, "rgba(243, 210, 102, 0.12)");
+            gradient.addColorStop(0.5, "rgba(212, 175, 55, 0.03)");
+            gradient.addColorStop(1, "transparent");
+            ctx.fillStyle = gradient;
+            ctx.fillRect(mouse.x - 180, mouse.y - 180, 360, 360);
+        }
+
+        // Update & draw floating runes + golden constellation threads near cursor
+        for (let i = 0; i < ambientParticles.length; i++) {
+            const p = ambientParticles[i];
+            p.update();
+            p.draw();
+
+            // Connect nearby runes to cursor with faint golden magic lines
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / 140) * 0.25})`;
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+            }
+        }
+
+        // Update & draw click explosion sparkles
+        for (let i = burstParticles.length - 1; i >= 0; i--) {
+            const b = burstParticles[i];
+            b.update();
+            b.draw();
+            if (b.alpha <= 0) {
+                burstParticles.splice(i, 1);
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 
 });
