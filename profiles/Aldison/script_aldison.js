@@ -1,28 +1,56 @@
-window.addEventListener("scroll", () => {
-    const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-    const progress = maxScroll > 0
-        ? window.scrollY / maxScroll
-        : 0;
-
-    // Make the descent more aggressive
-    const darkness = Math.pow(progress, 0.7);
-
-    document.documentElement.style.setProperty(
-        "--abyss-darkness",
-        darkness
-    );
-});
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
     // =====================================
-    // 1. INK CURSOR GLOW
+    // 1. ABYSS DESCENT / DARKENING
+    // =====================================
+
+    let ticking = false;
+
+    function updateAbyss() {
+
+        const maxScroll =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+        const progress = maxScroll > 0
+            ? window.scrollY / maxScroll
+            : 0;
+
+        // Gradually increase darkness
+        const darkness = Math.pow(progress, 0.85);
+
+        document.documentElement.style.setProperty(
+            "--abyss-darkness",
+            darkness.toFixed(4)
+        );
+
+        // Update reading progress
+        progressBar.style.width =
+            (progress * 100) + "%";
+
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+
+        if (!ticking) {
+
+            window.requestAnimationFrame(updateAbyss);
+
+            ticking = true;
+
+        }
+
+    }, { passive: true });
+
+
+    // =====================================
+    // 2. INK CURSOR GLOW
     // =====================================
 
     const cursorGlow = document.createElement("div");
+
     cursorGlow.classList.add("ink-cursor");
 
     document.body.appendChild(cursorGlow);
@@ -36,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =====================================
-    // 2. FLOATING INK PARTICLES
+    // 3. FLOATING INK PARTICLES
     // =====================================
 
     const symbols = [
@@ -53,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
         particle.textContent =
             symbols[Math.floor(Math.random() * symbols.length)];
 
-        particle.style.left = Math.random() * 100 + "vw";
+        particle.style.left =
+            Math.random() * 100 + "vw";
 
         particle.style.animationDuration =
             (16 + Math.random() * 14) + "s";
@@ -77,10 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function startParticles() {
 
         if (!particleInterval) {
+
             particleInterval = setInterval(
                 createInkParticle,
                 2600
             );
+
         }
 
     }
@@ -88,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function stopParticles() {
 
         clearInterval(particleInterval);
+
         particleInterval = null;
 
     }
@@ -106,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =====================================
-    // 3. MANUSCRIPT REVEAL
+    // 4. MANUSCRIPT REVEAL
     // =====================================
 
     const revealElements = document.querySelectorAll(
@@ -114,7 +146,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     revealElements.forEach(element => {
+
         element.classList.add("ink-reveal");
+
     });
 
     const revealObserver = new IntersectionObserver(
@@ -139,12 +173,14 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     revealElements.forEach(element => {
+
         revealObserver.observe(element);
+
     });
 
 
     // =====================================
-    // 4. ABYSS READING PROGRESS
+    // 5. READING PROGRESS BAR
     // =====================================
 
     const progressBar = document.createElement("div");
@@ -153,29 +189,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.body.appendChild(progressBar);
 
-    function updateProgress() {
+    // Initialize both effects
+    updateAbyss();
 
-        const scrollTop = window.scrollY;
-
-        const scrollHeight =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
-
-        const progress = scrollHeight > 0
-            ? (scrollTop / scrollHeight) * 100
-            : 0;
-
-        progressBar.style.width = progress + "%";
-
-    }
-
-    window.addEventListener("scroll", updateProgress);
-
-    updateProgress();
+    window.addEventListener("resize", updateAbyss);
 
 
     // =====================================
-    // 5. ARCHIVE ENTRY HOVER
+    // 6. ARCHIVE ENTRY HOVER
     // =====================================
 
     const archiveEntries =
@@ -199,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =====================================
-    // 6. LEVIATHAN MANUSCRIPT GLOW
+    // 7. LEVIATHAN MANUSCRIPT GLOW
     // =====================================
 
     const documents =
@@ -223,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =====================================
-    // 7. TOP-OF-PAGE RETURN EFFECT
+    // 8. RETURN TO THE SURFACE
     // =====================================
 
     const topLink = document.querySelector(
@@ -237,7 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.add("returning-surface");
 
             setTimeout(() => {
+
                 document.body.classList.remove("returning-surface");
+
             }, 1200);
 
         });
