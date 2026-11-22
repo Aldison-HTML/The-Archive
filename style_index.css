@@ -236,3 +236,37 @@ nav {
 .nav-links::-webkit-scrollbar-thumb:hover {
     background-color: #8C3B2B; /* Shifts to terracotta rust on hover */
 }
+
+/* Atmospheric screen flicker */
+
+body.page-flicker {
+    animation: archiveFlicker 220ms ease-out;
+}
+
+@keyframes archiveFlicker {
+
+    0% {
+        filter: brightness(1);
+    }
+
+    15% {
+        filter: brightness(0.88) saturate(0.85);
+    }
+
+    30% {
+        filter: brightness(1.08) saturate(1.15);
+    }
+
+    45% {
+        filter: brightness(0.94);
+    }
+
+    65% {
+        filter: brightness(1.04) saturate(1.1);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+
+}
