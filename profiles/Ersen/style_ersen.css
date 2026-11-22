@@ -410,7 +410,7 @@ footer p {
 
 
 /* =========================================
-   11. MAGICAL EFFECTS (CURSOR, REVEAL, MINECRAFT RUNES)
+   11. MAGICAL EFFECTS (CURSOR, REVEAL, RUNES, BURST)
 ========================================= */
 
 .cursor-glow {
@@ -466,6 +466,18 @@ footer p {
     }
     100% {
         transform: translateY(-105vh) translateX(30px) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Click Sparkle Burst Animation */
+@keyframes clickBurst {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(180deg);
         opacity: 0;
     }
 }
