@@ -1,11 +1,3 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@0,600;1,400&display=swap');
-
-
-/* =================================
-   COLOR PALETTE
-================================= */
-
 :root {
     --background: #171614;
     --surface: #211D19;
@@ -14,12 +6,8 @@
     --gold: #C5A059;
     --muted-gold: #896B3F;
     --text: #D8CBB5;
+    --abyss-darkness: 0;
 }
-
-
-/* =================================
-   GENERAL
-================================= */
 
 * {
     box-sizing: border-box;
@@ -33,25 +21,44 @@ html {
 body {
     margin: 0;
     padding: 0;
-
     background-color: var(--background);
-
     background-image:
         radial-gradient(
             ellipse at 50% 0%,
             rgba(137, 107, 63, 0.13),
             transparent 65%
         );
-
     color: var(--text);
     font-family: 'Lora', serif;
     line-height: 1.8;
 }
 
+body {
+    position: relative;
+}
 
-/* =================================
-   HEADER
-================================= */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 45, 100, 0.25) 0%,
+        rgba(0, 25, 70, 0.45) 15%,
+        rgba(0, 12, 45, 0.72) 25%,
+        rgba(0, 5, 25, 0.90) 35%,
+        rgba(0, 0, 12, 0.97) 45%
+    );
+
+    opacity: 65%;
+
+    pointer-events: none;
+    z-index: 9999;
+}
 
 header {
     position: relative;
@@ -86,9 +93,6 @@ header {
         0 15px 50px rgba(0, 0, 0, 0.35);
 }
 
-
-/* Header lighting */
-
 header::before {
     content: "";
     position: absolute;
@@ -100,12 +104,8 @@ header::before {
             rgba(197, 160, 89, 0.13),
             transparent 65%
         );
-
     pointer-events: none;
 }
-
-
-/* Header title */
 
 header h1 {
     position: relative;
@@ -123,10 +123,6 @@ header h1 {
         0 3px 10px rgba(0, 0, 0, 0.8),
         0 0 25px rgba(197, 160, 89, 0.15);
 }
-
-
-/* Curator subtitle */
-
 header .curator {
     position: relative;
 
@@ -139,11 +135,6 @@ header .curator {
     margin: 0;
     letter-spacing: 1px;
 }
-
-
-/* =================================
-   MAIN CONTENT
-================================= */
 
 section {
     width: 100%;
@@ -166,12 +157,6 @@ section {
     box-shadow:
         0 0 60px rgba(0, 0, 0, 0.3);
 }
-
-
-/* =================================
-   SECTION HEADINGS
-================================= */
-
 section h2 {
     font-family: 'Lora', serif;
     font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -187,11 +172,6 @@ section h2 {
     text-shadow:
         0 2px 12px rgba(197, 160, 89, 0.12);
 }
-
-
-/* =================================
-   DIVIDERS
-================================= */
 
 hr {
     border: none;
@@ -209,11 +189,6 @@ hr {
     margin: 45px 0;
 }
 
-
-/* =================================
-   PARAGRAPHS
-================================= */
-
 section > p {
     max-width: 650px;
 
@@ -226,15 +201,13 @@ section > p {
     text-align: justify;
 }
 
-
-/* =================================
-   ARCHIVE INDEX
-================================= */
+.story {
+    max-width:none;
+}
 
 .archive-index {
     margin: 100px auto;
     padding: 55px 7%;
-
     width: 85%;
     max-width: 1300px;
 
@@ -244,7 +217,6 @@ section > p {
             rgba(25, 21, 17, 0.96)
         ),
         url("ink.jpeg");
-
     background-position: center;
     background-size: cover;
 
@@ -255,9 +227,6 @@ section > p {
         0 10px 35px rgba(0, 0, 0, 0.4);
 }
 
-
-/* Archive index heading */
-
 .archive-index h2 {
     color: var(--parchment);
     font-family: 'Lora', serif;
@@ -267,27 +236,17 @@ section > p {
     margin-bottom: 12px;
 }
 
-
-/* Archive index description */
-
 .archive-index > p {
     color: #A99A82;
     font-style: italic;
     margin-bottom: 40px;
 }
-
-
-/* Archive links */
-
 .archive-link {
     display: block;
 
     color: inherit;
     text-decoration: none;
 }
-
-
-/* Individual archive entries */
 
 .archive-entry {
     padding: 22px 25px;
@@ -304,9 +263,6 @@ section > p {
     background: rgba(197, 160, 89, 0.09);
 }
 
-
-/* Archive volume number */
-
 .archive-entry span {
     color: var(--gold);
 
@@ -317,9 +273,6 @@ section > p {
     text-transform: uppercase;
 }
 
-
-/* Archive entry title */
-
 .archive-entry h3 {
     color: var(--parchment);
 
@@ -329,20 +282,12 @@ section > p {
     margin: 10px 0;
 }
 
-
-/* Archive entry description */
-
 .archive-entry p {
     color: #A99A82;
 
     margin: 0;
     line-height: 1.7;
 }
-
-
-/* =================================
-   QUOTE AND DOCUMENT GROUPS
-================================= */
 
 .document-group {
     display: flex;
@@ -355,26 +300,15 @@ section > p {
     margin-bottom: 55px;
 }
 
-
-/* Left alignment */
-
 .document-group.left {
     margin-right: auto;
     margin-left: 0;
 }
 
-
-/* Right alignment */
-
 .document-group.right {
     margin-left: auto;
     margin-right: 0;
 }
-
-
-/* =================================
-   QUOTES
-================================= */
 
 .document-group .quote {
     width: 100%;
@@ -392,28 +326,17 @@ section > p {
     background: rgba(197, 160, 89, 0.04);
 }
 
-
-/* Left quote */
-
 .document-group.left .quote {
     text-align: left;
 
     border-left: 2px solid var(--muted-gold);
 }
 
-
-/* Right quote */
-
 .document-group.right .quote {
     text-align: right;
 
     border-right: 2px solid var(--muted-gold);
 }
-
-
-/* =================================
-   PDF DOCUMENTS
-================================= */
 
 .document-group iframe {
     display: block;
@@ -433,11 +356,6 @@ section > p {
         0 0 20px rgba(197, 160, 89, 0.06);
 }
 
-
-/* =================================
-   IMAGES AND ARTIFACTS
-================================= */
-
 section img {
     display: block;
 
@@ -453,11 +371,6 @@ section img {
         0 0 15px rgba(197, 160, 89, 0.08);
 }
 
-
-/* =================================
-   FIGURE CAPTIONS
-================================= */
-
 figcaption {
     font-family: 'Inter', sans-serif;
     font-size: 0.88rem;
@@ -471,11 +384,6 @@ figcaption {
 
     border-top: 1px solid var(--muted-gold);
 }
-
-
-/* =================================
-   CLOSING NOTE
-================================= */
 
 .closing-note {
     max-width: 850px;
@@ -496,10 +404,8 @@ figcaption {
 
     box-shadow:
         0 10px 35px rgba(0, 0, 0, 0.3);
+
 }
-
-
-/* Closing note heading */
 
 .closing-note h2 {
     color: var(--parchment);
@@ -510,9 +416,6 @@ figcaption {
     margin-bottom: 25px;
 }
 
-
-/* Closing note text */
-
 .closing-note p {
     color: #C2B49C;
 
@@ -521,9 +424,6 @@ figcaption {
     margin: 15px auto;
     max-width: 700px;
 }
-
-
-/* Curator signature */
 
 .closing-note .signature {
     color: var(--gold);
@@ -537,14 +437,9 @@ figcaption {
     margin-top: 35px;
 }
 
-
-/* =================================
-   FOOTER
-================================= */
-
 footer {
-    padding: 45px 20px;
-    margin-top: 100px;
+    padding: 50px 20px;
+    margin-top: 0px;
 
     text-align: center;
 
@@ -553,9 +448,8 @@ footer {
     border-top: 1px solid var(--muted-gold);
 }
 
-
 footer p {
-    color: #897B65;
+    color: #A99A82;
 
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
@@ -563,7 +457,6 @@ footer p {
     letter-spacing: 1px;
     margin: 10px 0;
 }
-
 
 footer p:first-child {
     color: var(--gold);
@@ -574,20 +467,10 @@ footer p:first-child {
     letter-spacing: 3px;
 }
 
-
-/* =================================
-   TEXT SELECTION
-================================= */
-
 ::selection {
     background: var(--gold);
     color: var(--background);
 }
-
-
-/* =================================
-   SCROLLBAR
-================================= */
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -604,22 +487,12 @@ footer p:first-child {
     border-radius: 10px;
 }
 
-
-/* =================================
-   RESPONSIVE DESIGN
-================================= */
-
 @media (max-width: 768px) {
-
-    /* Header */
 
     header {
         height: 60vh;
         min-height: 400px;
     }
-
-
-    /* Main content */
 
     section {
         padding: 50px 6% 80px;
@@ -629,22 +502,16 @@ footer p:first-child {
         max-width: 100%;
     }
 
-
-    /* Archive index */
-
     .archive-index {
         width: 100%;
 
         padding: 35px 6%;
         margin: 65px auto;
     }
-
+    
     .archive-entry {
         padding: 18px;
     }
-
-
-    /* Documents and quotes */
 
     .document-group {
         width: 100%;
@@ -662,32 +529,21 @@ footer p:first-child {
         padding: 18px;
     }
 
-
-    /* Images */
-
     section img {
         width: 100%;
         margin: 35px 0;
     }
-
-
-    /* Closing note */
 
     .closing-note {
         margin: 70px auto;
         padding: 35px 25px;
     }
 
-
-    /* Footer */
-
     footer {
         margin-top: 60px;
     }
 
 }
-
-/* --- Return Navigation --- */
 
 .back-navigation {
     display: flex;
@@ -714,7 +570,7 @@ footer p:first-child {
 
     box-shadow: 0 4px 12px rgba(28, 28, 30, 0.15);
 
-    transition: 
+    transition:
         transform 0.25s ease,
         border-color 0.25s ease,
         box-shadow 0.25s ease;
