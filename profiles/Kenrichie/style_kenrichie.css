@@ -258,7 +258,7 @@ hr {
     text-decoration: none;
 }
 
-.a.archive-entry {
+.archive-entry {
     position: relative;
     overflow: hidden;
     z-index: 1; /* Keeps text above the sliding fill layer */
