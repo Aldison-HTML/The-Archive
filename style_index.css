@@ -48,10 +48,9 @@ section h1 {
     font-family: 'Lora', serif;
     color: #ececec;
     text-shadow: 
-        0 0 2px #ececec,
-        0 0 7px #ececec,
-        0 0 11px #e9d669,
-        0 0 15px #e9d669;
+        0 0 3px #ececec,
+        0 0 6px #e9d669,
+        0 0 10px #e9d669;
 }
 
 section p {
