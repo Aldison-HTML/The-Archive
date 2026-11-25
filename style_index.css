@@ -1,7 +1,7 @@
 header {
     position: relative;
     overflow: hidden;
-    height: 800px; /* Sets a clean 800px height */
+    height: 400px;
     background-color: #1C1C1E;
 }
 
@@ -85,7 +85,7 @@ hr {
 }
 
 body {
-    background-color: linear-gradient(180deg, #1C1C1E 100%, #4d4c4c 50%, #8e8e93 25%);
+    background-color: radial-gradient(180deg, #1C1C1E, #4d4c4c, #8e8e93);
     padding: 0;
     margin: 0;
 }
