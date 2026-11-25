@@ -8,7 +8,7 @@
     <!-- Arcane & Editorial Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style_ersen.css">
     <script src="script_ersen.js" defer></script>
@@ -16,11 +16,21 @@
 
 <body>
 
+    <!-- PURE CSS AMBIENT EMBERS (ZERO LAG) -->
+    <div class="ember-field" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
     <!-- HEADER -->
     <header id="top">
-        <div class="arcane-crest">🔥</div>
+        <div class="arcane-seal">
+            <span class="seal-ring"></span>
+            <span class="seal-icon">ᛟ</span>
+        </div>
         <h1>Ersen's Learning Portfolio</h1>
         <p class="curator">Curated by Sorc. Ersen · Keeper of the Pyre</p>
+        <div class="header-flame-line"></div>
     </header>
 
     <!-- MAIN CONTENT -->
@@ -28,8 +38,8 @@
 
         <h2>Grimoires &amp; Arcane Writings of the Sorcerer</h2>
 
-        <p class="story">
-            The scent of aged parchment fills the obsidian chamber. Ancient
+        <p class="story drop-cap">
+            The scent of aged parchment and ash fills the obsidian chamber. Ancient
             manuscripts rest upon towering shelves, their pages
             stirring despite the absence of wind. Faint ember-red flames illuminate
             the dark stone walls, revealing fragments of spells long forgotten.
@@ -40,13 +50,18 @@
         <hr>
 
         <nav class="back-navigation">
-            <a href="../../index.html">← Return to the Grand Archive</a>
+            <a href="../../index.html"><span>← Return to the Grand Archive</span></a>
         </nav>
 
         <hr>
 
         <!-- ARCHIVE INDEX -->
         <div class="archive-index">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
 
             <h2>Records of the Pyre</h2>
 
@@ -58,7 +73,10 @@
 
             <a href="#vol1" class="archive-link">
                 <div class="archive-entry">
-                    <span>VOL. I · INITIATION</span>
+                    <div class="entry-header">
+                        <span>VOL. I · INITIATION</span>
+                        <span class="rune-tag">ᚠ</span>
+                    </div>
                     <h3>The Foundations of Sorcery</h3>
                     <p>
                         An introduction to the principles of magic,
@@ -70,7 +88,10 @@
 
             <a href="#vol2" class="archive-link">
                 <div class="archive-entry">
-                    <span>VOL. II · INCANTATIONS</span>
+                    <div class="entry-header">
+                        <span>VOL. II · INCANTATIONS</span>
+                        <span class="rune-tag">ᚱ</span>
+                    </div>
                     <h3>Scriptures of the Arcane</h3>
                     <p>
                         An examination of ancient spellcraft,
@@ -82,7 +103,10 @@
 
             <a href="#vol3" class="archive-link">
                 <div class="archive-entry">
-                    <span>VOL. III · MASTERY</span>
+                    <div class="entry-header">
+                        <span>VOL. III · MASTERY</span>
+                        <span class="rune-tag">ᛉ</span>
+                    </div>
                     <h3>The Forbidden Grimoire</h3>
                     <p>
                         The most secretive writings in the collection,
@@ -108,10 +132,12 @@
                 — Socrates
             </p>
 
-            <iframe
-                src="Ersen - Initial.pdf#toolbar=0&navpanes=0&view=FitH"
-                title="The Foundations of Sorcery">
-            </iframe>
+            <div class="grimoire-frame">
+                <iframe
+                    src="Ersen - Initial.pdf#toolbar=0&navpanes=0&view=FitH"
+                    title="The Foundations of Sorcery">
+                </iframe>
+            </div>
         </div>
 
         <p class="story">
@@ -131,10 +157,12 @@
                 — Ludwig Wittgenstein
             </p>
 
-            <iframe
-                src="Ersen - Second.pdf#toolbar=0&navpanes=0&view=FitH"
-                title="Scriptures of the Arcane">
-            </iframe>
+            <div class="grimoire-frame">
+                <iframe
+                    src="Ersen - Second.pdf#toolbar=0&navpanes=0&view=FitH"
+                    title="Scriptures of the Arcane">
+                </iframe>
+            </div>
         </div>
 
         <p class="story">
@@ -155,10 +183,12 @@
                 — William Shakespeare
             </p>
 
-            <iframe
-                src="Ersen - Final.pdf#toolbar=0&navpanes=0&view=FitH"
-                title="The Forbidden Grimoire">
-            </iframe>
+            <div class="grimoire-frame">
+                <iframe
+                    src="Ersen - Final.pdf#toolbar=0&navpanes=0&view=FitH"
+                    title="The Forbidden Grimoire">
+                </iframe>
+            </div>
         </div>
 
         <p class="story">
@@ -202,7 +232,7 @@
         <p>Est. 2026 · Knowledge Is the Greatest Power</p>
 
         <nav class="back-navigation">
-            <a href="#top">↑ Ascend to the Surface</a>
+            <a href="#top"><span>↑ Ascend to the Surface</span></a>
         </nav>
     </footer>
 
