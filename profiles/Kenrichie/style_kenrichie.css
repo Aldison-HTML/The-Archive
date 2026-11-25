@@ -54,6 +54,35 @@ body {
     overflow-x: hidden;
 }
 
+/* Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+    border-left: 1px solid var(--border-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        #2563eb,
+        var(--accent-teal),
+        var(--text-green-bright)
+    );
+    border-radius: 5px;
+    border: 2px solid var(--bg-main); /* Creates clean padding around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        to bottom,
+        #3b82f6,
+        var(--accent-emerald),
+        #86efac
+    );
+}
 
 /* =========================================
    HEADER
@@ -106,7 +135,9 @@ header h1 {
     text-transform: uppercase;
 
     text-shadow:
-        0 0 20px rgba(16, 185, 129, 0.35),
+        0 0 8px rgba(74, 222, 128, 0.8),
+        0 0 20px rgba(16, 185, 129, 0.65),
+        0 0 42px rgba(20, 184, 166, 0.45),
         2px 3px 6px #040814;
 }
 
