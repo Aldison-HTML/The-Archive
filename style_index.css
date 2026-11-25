@@ -46,13 +46,7 @@ section h1 {
     font-size: 2.5rem;
     text-align: center;
     font-family: 'Lora', serif;
-    color: #f3d266;
-    text-shadow: 
-        0 0 1px #f3d266,
-        0 0 6px #f3d266,
-        0 0 11px #f3d266,
-        0 0 16px #ff9900,
-        0 0 20px #ff9900;
+    color: #ececec;
 }
 
 section p {
@@ -72,7 +66,13 @@ section p {
     font-size: 2rem;
     margin-bottom: 20px;
     font-family: 'Lora', serif;
-    color: #ececec;
+    color: #f3d266;
+    text-shadow: 
+        0 0 1px #f3d266,
+        0 0 6px #f3d266,
+        0 0 11px #f3d266,
+        0 0 16px #ff9900,
+        0 0 20px #ff9900;
 }
 
 hr {
