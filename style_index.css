@@ -85,7 +85,7 @@ hr {
 }
 
 body {
-    background-color: linear-gradient(180deg, #1C1C1E 0%, #4d4c4c 50%, #8e8e93 100%);
+    background-color: linear-gradient(180deg, #1C1C1E 100%, #4d4c4c 50%, #8e8e93 25%);
     padding: 0;
     margin: 0;
 }
@@ -174,27 +174,6 @@ nav {
 
 .nav-links a::before {
     z-index: -1;
-}
-
-/* Individual background images based on href */
-.nav-links a[href="Aldison.html"] {
-    background-image: url('Aldison.png');
-}
-
-.nav-links a[href="Dean.html"] {
-    background-image: url('Dean.png');
-}
-
-.nav-links a[href="Ersen.html"] {
-    background-image: url('Ersen.png');
-}
-
-.nav-links a[href="Kenrichie.html"] {
-    background-image: url('Kenrichie.png');
-}
-
-.nav-links a[href="Matthew.html"] {
-    background-image: url('Matthew.png');
 }
 
 /* Refined arrow badge */
