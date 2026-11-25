@@ -1,5 +1,5 @@
 /* =========================================
-   1. GENERAL & OBSIDIAN THEME
+   1. GENERAL & OBSIDIAN-FIRE THEME
 ========================================= */
 
 * {
@@ -16,27 +16,16 @@ html {
 body {
     background-color: #050507;
     background-image: 
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 15% 40%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+        radial-gradient(circle at 50% 0%, rgba(220, 50, 30, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 15% 40%, rgba(200, 30, 20, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(180, 20, 10, 0.04) 0%, transparent 40%);
     color: #e4decb;
     font-family: 'Lora', Georgia, serif;
     line-height: 1.85;
     overflow-x: hidden;
 }
 
-/* Interactive Background Canvas */
-#arcane-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Custom Golden Scrollbar */
+/* Custom Fire-Red Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -44,7 +33,7 @@ body {
     background: #050507;
 }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #7a5c1e, #d4af37, #7a5c1e);
+    background: linear-gradient(to bottom, #801510, #ff3b30, #801510);
     border-radius: 4px;
 }
 
@@ -58,20 +47,20 @@ header {
     padding: 90px 20px 80px;
     text-align: center;
     background:
-        radial-gradient(circle at center, rgba(18, 15, 10, 0.55) 0%, rgba(5, 5, 7, 0.92) 95%),
+        radial-gradient(circle at center, rgba(18, 10, 10, 0.6) 0%, rgba(5, 5, 7, 0.95) 95%),
         url("libr.jpeg");
     background-size: cover;
     background-position: center;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    border-bottom: 1px solid rgba(255, 59, 48, 0.4);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
     position: relative;
 }
 
 .arcane-crest {
     font-size: 2.2rem;
-    color: #f3d266;
+    color: #ff453a;
     margin-bottom: 10px;
-    text-shadow: 0 0 15px rgba(243, 210, 102, 0.8);
+    text-shadow: 0 0 15px rgba(255, 69, 58, 0.8);
     animation: slowPulse 4s infinite ease-in-out;
 }
 
@@ -86,15 +75,17 @@ header h1 {
     font-size: clamp(2.4rem, 5.5vw, 4.3rem);
     letter-spacing: 5px;
     text-transform: uppercase;
-    background: linear-gradient(180deg, #fff3b0 0%, #d4af37 50%, #99741f 100%);
+    
+    /* Fire-Red Gradient Text */
+    background: linear-gradient(180deg, #ffb3b0 0%, #ff3b30 50%, #991410 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
+    filter: drop-shadow(0 4px 12px rgba(255, 59, 48, 0.35));
 }
 
 .curator {
     margin-top: 15px;
-    color: #c5a44d;
+    color: #cc6660;
     font-family: 'Cinzel', serif;
     font-size: 1rem;
     letter-spacing: 3px;
@@ -116,10 +107,10 @@ section > h2 {
     font-family: 'Cinzel', Georgia, serif;
     text-align: center;
     font-size: 2rem;
-    color: #f0cf65;
+    color: #ff6961;
     margin-bottom: 25px;
     letter-spacing: 2px;
-    text-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
+    text-shadow: 0 0 18px rgba(255, 59, 48, 0.35);
 }
 
 section .story {
@@ -132,7 +123,7 @@ section .story {
 
 
 /* =========================================
-   4. ARCANE DIVIDERS
+   4. FIRE DIVIDERS
 ========================================= */
 
 hr {
@@ -142,12 +133,12 @@ hr {
     background: linear-gradient(
         to right,
         transparent,
-        rgba(212, 175, 55, 0.3),
-        #ffe07d,
-        rgba(212, 175, 55, 0.3),
+        rgba(255, 59, 48, 0.3),
+        #ff6961,
+        rgba(255, 59, 48, 0.3),
         transparent
     );
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 8px rgba(255, 59, 48, 0.25);
 }
 
 
@@ -163,21 +154,21 @@ hr {
 .back-navigation a {
     display: inline-block;
     padding: 10px 24px;
-    color: #e6c35c;
+    color: #ff857d;
     font-family: 'Cinzel', serif;
     text-decoration: none;
     font-size: 0.9rem;
     letter-spacing: 2px;
-    border: 1px solid rgba(212, 175, 55, 0.35);
-    background: rgba(15, 13, 9, 0.85);
+    border: 1px solid rgba(255, 59, 48, 0.35);
+    background: rgba(15, 10, 10, 0.85);
     transition: all 0.35s ease;
 }
 
 .back-navigation a:hover {
     color: #050507;
-    background: #d4af37;
-    border-color: #ffe484;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    background: #ff3b30;
+    border-color: #ffb3b0;
+    box-shadow: 0 0 20px rgba(255, 59, 48, 0.6);
 }
 
 
@@ -188,35 +179,34 @@ hr {
 .archive-index {
     margin: 65px 0;
     padding: 45px;
-    background: linear-gradient(145deg, rgba(13, 11, 8, 0.9), rgba(6, 6, 8, 0.92));
-    border: 1px solid rgba(212, 175, 55, 0.45);
+    background: linear-gradient(145deg, rgba(13, 8, 8, 0.9), rgba(6, 6, 8, 0.92));
+    border: 1px solid rgba(255, 59, 48, 0.45);
     box-shadow:
-        inset 0 0 40px rgba(212, 175, 55, 0.05),
+        inset 0 0 40px rgba(255, 59, 48, 0.05),
         0 15px 40px rgba(0, 0, 0, 0.85);
     position: relative;
 }
 
 .archive-index::before,
 .archive-index::after {
-    content: "✦";
+    content: "🔥";
     position: absolute;
-    color: #d4af37;
-    font-size: 1.2rem;
-    text-shadow: 0 0 10px #d4af37;
+    font-size: 0.9rem;
+    filter: drop-shadow(0 0 8px #ff3b30);
 }
 .archive-index::before { top: 12px; left: 15px; }
 .archive-index::after { bottom: 12px; right: 15px; }
 
 .archive-index > h2 {
     font-family: 'Cinzel', serif;
-    color: #f3d266;
+    color: #ff453a;
     font-size: 1.85rem;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
 .archive-index > p {
-    color: #a89d7c;
+    color: #c49995;
     margin-bottom: 30px;
     font-style: italic;
 }
@@ -230,23 +220,23 @@ hr {
 .archive-entry {
     padding: 25px 30px;
     margin: 20px 0;
-    background: rgba(12, 11, 14, 0.85);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-left: 4px solid #b89028;
+    background: rgba(14, 11, 11, 0.85);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+    border-left: 4px solid #b32d25;
     transition: all 0.35s ease;
 }
 
 .archive-entry:hover {
-    background: linear-gradient(90deg, rgba(212, 175, 55, 0.16), rgba(10, 10, 12, 0.95));
-    border-color: rgba(243, 210, 102, 0.6);
-    border-left-color: #ffe58f;
+    background: linear-gradient(90deg, rgba(255, 59, 48, 0.16), rgba(10, 10, 12, 0.95));
+    border-color: rgba(255, 69, 58, 0.6);
+    border-left-color: #ff6961;
     transform: translateX(10px);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 25px rgba(255, 59, 48, 0.2);
 }
 
 .archive-entry span {
     font-family: 'Cinzel', serif;
-    color: #d4af37;
+    color: #ff5247;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 3px;
@@ -254,7 +244,7 @@ hr {
 
 .archive-entry h3 {
     font-family: 'Cinzel', serif;
-    color: #fff2c2;
+    color: #ffebe8;
     font-size: 1.4rem;
     margin: 6px 0;
 }
@@ -266,7 +256,7 @@ hr {
 
 
 /* =========================================
-   7. DOCUMENT GROUPS & ENCHANTED FRAMES
+   7. DOCUMENT GROUPS & FIRE FRAMES
 ========================================= */
 
 .document-group {
@@ -288,29 +278,29 @@ hr {
     display: block;
     width: 100%;
     height: 520px;
-    border: 2px solid #b89028;
+    border: 2px solid #b32d25;
     background-color: #0b0a0d;
     box-shadow:
         0 0 0 4px #08080a,
-        0 0 0 5px rgba(212, 175, 55, 0.45),
+        0 0 0 5px rgba(255, 59, 48, 0.45),
         0 15px 35px rgba(0, 0, 0, 0.9),
-        0 0 25px rgba(212, 175, 55, 0.15);
+        0 0 25px rgba(255, 59, 48, 0.15);
 }
 
 
 /* =========================================
-   8. ARCANE QUOTES
+   8. FIRE QUOTES
 ========================================= */
 
 .quote {
-    color: #f0d478;
+    color: #ff857d;
     font-style: italic;
     font-size: 1.05rem;
     line-height: 1.8;
     padding: 20px 25px;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, rgba(212, 175, 55, 0.12), rgba(10, 10, 12, 0.6));
-    border-left: 3px solid #d4af37;
+    background: linear-gradient(90deg, rgba(255, 59, 48, 0.12), rgba(10, 10, 12, 0.6));
+    border-left: 3px solid #ff3b30;
     box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
@@ -320,7 +310,7 @@ section > hr {
 
 
 /* =========================================
-   9. READTHEORY CODEX PROGRESS BOX
+   9. READTHEORY PROGRESS BOX
 ========================================= */
 
 .codex-progress-box {
@@ -328,20 +318,20 @@ section > hr {
     margin: 80px auto;
     padding: 45px 35px;
     text-align: center;
-    background: radial-gradient(circle at top, rgba(20, 17, 11, 0.92), rgba(7, 7, 9, 0.95));
-    border: 1px solid #d4af37;
+    background: radial-gradient(circle at top, rgba(20, 11, 11, 0.92), rgba(7, 7, 9, 0.95));
+    border: 1px solid #ff3b30;
     box-shadow: 
-        0 0 35px rgba(212, 175, 55, 0.15),
+        0 0 35px rgba(255, 59, 48, 0.15),
         inset 0 0 40px rgba(0, 0, 0, 0.85);
 }
 
 .codex-progress-box h2 {
     font-family: 'Cinzel', serif;
-    color: #f3d266;
+    color: #ff453a;
     font-size: 1.85rem;
     letter-spacing: 2.5px;
     margin-bottom: 25px;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.45);
+    text-shadow: 0 0 15px rgba(255, 59, 48, 0.45);
 }
 
 .codex-progress-box img {
@@ -350,12 +340,12 @@ section > hr {
     max-width: 700px;
     height: auto;
     margin: auto;
-    border: 2px solid #d4af37;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.2);
+    border: 2px solid #ff3b30;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 59, 48, 0.2);
 }
 
 .codex-caption {
-    color: #c2aa63;
+    color: #cc8882;
     font-size: 0.95rem;
     font-style: italic;
     margin-top: 22px;
@@ -370,14 +360,14 @@ section > hr {
     clear: both;
     margin-top: 70px;
     padding: 45px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(8, 8, 10, 0.92));
-    border: 1px solid rgba(212, 175, 55, 0.45);
+    background: linear-gradient(135deg, rgba(255, 59, 48, 0.08), rgba(8, 8, 10, 0.92));
+    border: 1px solid rgba(255, 59, 48, 0.45);
     box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.8);
 }
 
 .closing-note h2 {
     font-family: 'Cinzel', serif;
-    color: #f3d266;
+    color: #ff453a;
     font-size: 1.8rem;
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -386,11 +376,11 @@ section > hr {
 .signature {
     font-family: 'Cinzel', serif;
     text-align: right;
-    color: #e6c35c;
+    color: #ff857d;
     font-size: 1.05rem;
     letter-spacing: 1.5px;
     margin-top: 30px;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
 }
 
 footer {
@@ -398,12 +388,12 @@ footer {
     padding: 55px 20px;
     text-align: center;
     background-color: rgba(3, 3, 4, 0.95);
-    border-top: 1px solid rgba(212, 175, 55, 0.4);
+    border-top: 1px solid rgba(255, 59, 48, 0.4);
 }
 
 footer .footer-title {
     font-family: 'Cinzel', serif;
-    color: #d4af37;
+    color: #ff3b30;
     font-size: 1.1rem;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -411,7 +401,7 @@ footer .footer-title {
 }
 
 footer p {
-    color: #8c7e58;
+    color: #a37571;
     font-size: 0.9rem;
     margin: 5px 0;
 }
@@ -440,11 +430,11 @@ footer p {
     width: 0%;
     background: linear-gradient(
         to right,
-        #7a5c1e,
-        #ffe58f,
-        #d4af37
+        #801510,
+        #ff6961,
+        #ff3b30
     );
-    box-shadow: 0 0 12px rgba(255, 229, 143, 0.8);
+    box-shadow: 0 0 12px rgba(255, 59, 48, 0.8);
     z-index: 10000;
 }
 
