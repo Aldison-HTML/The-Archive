@@ -14,15 +14,35 @@ html {
 }
 
 body {
-    background-color: #040406;
+    background-color: #030305;
     background-image: 
-        radial-gradient(circle at 50% -10%, rgba(255, 65, 30, 0.16) 0%, transparent 55%),
-        radial-gradient(circle at 10% 45%, rgba(200, 25, 15, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 90% 80%, rgba(220, 45, 20, 0.06) 0%, transparent 45%);
+        radial-gradient(circle at 50% -10%, rgba(255, 65, 30, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 15% 50%, rgba(190, 20, 15, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(220, 45, 20, 0.06) 0%, transparent 45%);
     color: #e6dfd3;
     font-family: 'Lora', Georgia, serif;
     line-height: 1.85;
     overflow-x: hidden;
+}
+
+/* Interactive Background Canvas */
+#pyre-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Deep Cinematic Edge Vignette */
+.obsidian-vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 55%, rgba(0, 0, 0, 0.85) 100%);
+    z-index: 0;
 }
 
 /* Custom Molten Scrollbar */
@@ -30,7 +50,7 @@ body {
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #040406;
+    background: #030305;
 }
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to bottom, #6e0d08, #ff4522, #ff9933, #6e0d08);
@@ -39,126 +59,103 @@ body {
 
 
 /* =========================================
-   2. ZERO-LAG PURE CSS RISING EMBERS
-========================================= */
-
-.ember-field {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.ember-field span {
-    position: absolute;
-    bottom: -20px;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #ff6a2b;
-    box-shadow: 0 0 10px #ff3b1f, 0 0 20px #ff8833;
-    opacity: 0;
-    will-change: transform, opacity;
-    animation: riseEmber 12s infinite ease-in;
-}
-
-.ember-field span:nth-child(1) { left: 10%; animation-duration: 11s; animation-delay: 0s; }
-.ember-field span:nth-child(2) { left: 22%; animation-duration: 14s; animation-delay: 3s; width: 3px; height: 3px; }
-.ember-field span:nth-child(3) { left: 37%; animation-duration: 10s; animation-delay: 6s; }
-.ember-field span:nth-child(4) { left: 50%; animation-duration: 15s; animation-delay: 1s; width: 5px; height: 5px; }
-.ember-field span:nth-child(5) { left: 64%; animation-duration: 12s; animation-delay: 4s; }
-.ember-field span:nth-child(6) { left: 76%; animation-duration: 13s; animation-delay: 7s; width: 3px; height: 3px; }
-.ember-field span:nth-child(7) { left: 88%; animation-duration: 11s; animation-delay: 2s; }
-.ember-field span:nth-child(8) { left: 95%; animation-duration: 16s; animation-delay: 5s; }
-
-@keyframes riseEmber {
-    0% {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 0;
-    }
-    20% {
-        opacity: 0.85;
-    }
-    80% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translate3d(25px, -105vh, 0) scale(0.2);
-        opacity: 0;
-    }
-}
-
-
-/* =========================================
-   3. HEADER & SPINNING ARCANE SEAL
+   2. HEADER & DUAL SPINNING ARCANE SEALS
 ========================================= */
 
 header {
-    min-height: 390px;
-    padding: 85px 20px 85px;
+    min-height: 410px;
+    padding: 90px 20px 85px;
     text-align: center;
     background:
-        radial-gradient(circle at center, rgba(35, 10, 8, 0.6) 0%, rgba(4, 4, 6, 0.96) 92%),
+        radial-gradient(circle at center, rgba(40, 10, 8, 0.55) 0%, rgba(3, 3, 5, 0.96) 90%),
         url("libr.jpeg");
     background-size: cover;
     background-position: center;
-    border-bottom: 1px solid rgba(255, 69, 45, 0.45);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 4px 30px rgba(255, 50, 20, 0.15);
+    border-bottom: 1px solid rgba(255, 69, 45, 0.5);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 4px 35px rgba(255, 50, 20, 0.18);
     position: relative;
 }
 
 .arcane-seal {
     position: relative;
-    width: 68px;
-    height: 68px;
-    margin: 0 auto 18px;
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 22px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.seal-ring {
+.seal-ring.outer {
     position: absolute;
     inset: 0;
-    border: 1.5px dashed rgba(255, 90, 50, 0.75);
+    border: 1.5px dashed rgba(255, 90, 50, 0.85);
     border-radius: 50%;
-    box-shadow: 0 0 18px rgba(255, 60, 30, 0.5), inset 0 0 12px rgba(255, 60, 30, 0.3);
-    animation: spinSeal 18s linear infinite;
+    box-shadow: 0 0 22px rgba(255, 60, 30, 0.55), inset 0 0 14px rgba(255, 60, 30, 0.35);
+    animation: spinClockwise 20s linear infinite;
+}
+
+.seal-ring.inner {
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(255, 160, 70, 0.6);
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: spinCounter 12s linear infinite;
 }
 
 .seal-icon {
-    font-size: 1.8rem;
-    color: #ff8c5a;
-    text-shadow: 0 0 14px #ff3b1f, 0 0 28px #ff6a2b;
+    font-size: 2rem;
+    color: #ff9c6b;
+    text-shadow: 0 0 16px #ff3b1f, 0 0 32px #ff7733;
     animation: emberFlicker 3s infinite alternate ease-in-out;
 }
 
-@keyframes spinSeal {
+@keyframes spinClockwise {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-@keyframes emberFlicker {
-    0%, 100% { opacity: 0.85; transform: scale(0.98); }
-    50% { opacity: 1; transform: scale(1.06); }
+@keyframes spinCounter {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
 }
 
-header h1 {
+@keyframes emberFlicker {
+    0%, 100% { opacity: 0.85; transform: scale(0.96); }
+    50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* Shimmering Molten Title */
+.molten-title {
     font-family: 'Cinzel', Georgia, serif;
     font-weight: 900;
     font-size: clamp(2.4rem, 5.5vw, 4.4rem);
     letter-spacing: 5px;
     text-transform: uppercase;
-    background: linear-gradient(180deg, #ffd1b3 0%, #ff5733 45%, #a3160d 100%);
+    background: linear-gradient(
+        110deg,
+        #a3160d 0%,
+        #ff4522 25%,
+        #ffe0b3 50%,
+        #ff4522 75%,
+        #a3160d 100%
+    );
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 16px rgba(255, 59, 31, 0.45));
+    filter: drop-shadow(0 4px 18px rgba(255, 59, 31, 0.45));
+    animation: moltenShimmer 6s linear infinite;
+}
+
+@keyframes moltenShimmer {
+    to { background-position: 200% center; }
 }
 
 .curator {
     margin-top: 14px;
-    color: #d9786c;
+    color: #e08275;
     font-family: 'Cinzel', serif;
     font-size: 0.98rem;
     letter-spacing: 3.5px;
@@ -167,7 +164,7 @@ header h1 {
 
 
 /* =========================================
-   4. MAIN CONTENT, DROP CAP & TYPOGRAPHY
+   3. MAIN CONTENT, DROP CAP & TYPOGRAPHY
 ========================================= */
 
 section {
@@ -199,20 +196,19 @@ section .story:hover {
     color: #fff6eb;
 }
 
-/* Illuminated Grimoire Drop Cap */
 .drop-cap::first-letter {
     float: left;
     font-family: 'Cinzel', serif;
-    font-size: 3.8rem;
+    font-size: 3.9rem;
     line-height: 0.85;
     padding: 6px 14px 4px 0;
     color: #ff5733;
-    text-shadow: 0 0 18px rgba(255, 69, 40, 0.7);
+    text-shadow: 0 0 20px rgba(255, 69, 40, 0.8);
 }
 
 
 /* =========================================
-   5. MOLTEN DIVIDERS
+   4. MOLTEN DIVIDERS
 ========================================= */
 
 hr {
@@ -223,16 +219,16 @@ hr {
         to right,
         transparent,
         rgba(255, 59, 31, 0.35),
-        #ff8c5a,
+        #ff9c6b,
         rgba(255, 59, 31, 0.35),
         transparent
     );
-    box-shadow: 0 0 12px rgba(255, 69, 40, 0.35);
+    box-shadow: 0 0 14px rgba(255, 69, 40, 0.4);
 }
 
 
 /* =========================================
-   6. SWEEPING FIRE BUTTONS
+   5. SWEEPING FIRE BUTTONS
 ========================================= */
 
 .back-navigation {
@@ -274,7 +270,7 @@ hr {
 .back-navigation a:hover {
     color: #050507;
     border-color: #ff9966;
-    box-shadow: 0 0 25px rgba(255, 69, 40, 0.65);
+    box-shadow: 0 0 28px rgba(255, 69, 40, 0.75);
 }
 
 .back-navigation a:hover::before {
@@ -283,7 +279,7 @@ hr {
 
 
 /* =========================================
-   7. GRIMOIRE ARCHIVE INDEX & CORNER RUNES
+   6. GRIMOIRE ARCHIVE INDEX & 3D TILT CARDS
 ========================================= */
 
 .archive-index {
@@ -295,16 +291,16 @@ hr {
         inset 0 0 50px rgba(255, 50, 20, 0.06),
         0 20px 50px rgba(0, 0, 0, 0.9);
     position: relative;
+    perspective: 1000px;
 }
 
-/* Glowing Arcane Corner Brackets */
 .corner {
     position: absolute;
     width: 18px;
     height: 18px;
     border-color: #ff5733;
     border-style: solid;
-    box-shadow: 0 0 10px rgba(255, 69, 40, 0.5);
+    box-shadow: 0 0 12px rgba(255, 69, 40, 0.6);
 }
 .corner.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
 .corner.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
@@ -335,17 +331,17 @@ hr {
     padding: 26px 32px;
     margin: 22px 0;
     background: rgba(14, 10, 11, 0.88);
-    border: 1px solid rgba(255, 69, 40, 0.22);
+    border: 1px solid rgba(255, 69, 40, 0.25);
     border-left: 4px solid #b8291d;
-    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .archive-entry:hover {
-    background: linear-gradient(90deg, rgba(255, 65, 35, 0.18), rgba(12, 10, 12, 0.95));
-    border-color: rgba(255, 110, 75, 0.65);
-    border-left-color: #ff8c5a;
-    transform: translateX(12px);
-    box-shadow: 0 0 30px rgba(255, 65, 35, 0.25);
+    background: linear-gradient(90deg, rgba(255, 65, 35, 0.2), rgba(12, 10, 12, 0.96));
+    border-color: rgba(255, 110, 75, 0.75);
+    border-left-color: #ff9c6b;
+    box-shadow: 0 12px 35px rgba(255, 65, 35, 0.28);
 }
 
 .entry-header {
@@ -363,14 +359,15 @@ hr {
 }
 
 .rune-tag {
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
     opacity: 0.5;
-    transition: opacity 0.3s ease, text-shadow 0.3s ease;
+    transition: opacity 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .archive-entry:hover .rune-tag {
     opacity: 1;
-    text-shadow: 0 0 12px #ff5733;
+    transform: scale(1.2);
+    text-shadow: 0 0 14px #ff5733;
 }
 
 .archive-entry h3 {
@@ -387,7 +384,7 @@ hr {
 
 
 /* =========================================
-   8. DOCUMENT GROUPS & ENCHANTED FRAMES
+   7. DOCUMENT GROUPS & ENCHANTED FRAMES
 ========================================= */
 
 .document-group {
@@ -413,14 +410,15 @@ hr {
     box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.92),
         0 0 28px rgba(255, 60, 30, 0.18);
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
 }
 
 .grimoire-frame:hover {
-    border-color: #ff8c5a;
+    border-color: #ff9c6b;
+    transform: translateY(-4px);
     box-shadow:
-        0 20px 45px rgba(0, 0, 0, 0.95),
-        0 0 38px rgba(255, 75, 40, 0.35);
+        0 24px 50px rgba(0, 0, 0, 0.95),
+        0 0 42px rgba(255, 75, 40, 0.4);
 }
 
 .document-group iframe {
@@ -433,7 +431,7 @@ hr {
 
 
 /* =========================================
-   9. PYRE QUOTES
+   8. PYRE QUOTES
 ========================================= */
 
 .quote {
@@ -454,7 +452,7 @@ section > hr {
 
 
 /* =========================================
-   10. READTHEORY CODEX PROGRESS BOX
+   9. READTHEORY CODEX PROGRESS BOX
 ========================================= */
 
 .codex-progress-box {
@@ -497,7 +495,7 @@ section > hr {
 
 
 /* =========================================
-   11. CLOSING NOTE & FOOTER
+   10. CLOSING NOTE & FOOTER
 ========================================= */
 
 .closing-note {
@@ -553,7 +551,7 @@ footer p {
 
 
 /* =========================================
-   12. UI REVEAL & PROGRESS BAR
+   11. UI REVEAL & PROGRESS BAR
 ========================================= */
 
 .reveal {
@@ -590,7 +588,7 @@ header, section, footer {
 
 
 /* =========================================
-   13. RESPONSIVE MOBILE DESIGN
+   12. RESPONSIVE MOBILE DESIGN
 ========================================= */
 
 @media (max-width: 768px) {
@@ -613,7 +611,7 @@ header, section, footer {
     .story {
         text-align: left;
     }
-    header h1 {
+    .molten-title {
         letter-spacing: 2px;
     }
 }
