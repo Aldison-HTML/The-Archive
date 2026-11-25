@@ -41,6 +41,13 @@ html {
 
 body {
     background-color: var(--bg-main);
+    background-image: radial-gradient(
+        circle at center,
+        var(--bg-card-top) 0%,
+        var(--bg-main) 65%,
+        var(--bg-card-bottom) 100%
+    );
+    background-attachment: fixed;
     color: var(--text-primary);
     font-family: 'Century Gothic', Futura, 'Trebuchet MS', Arial, sans-serif;
     line-height: 1.8;
@@ -251,9 +258,10 @@ hr {
     text-decoration: none;
 }
 
-.archive-entry {
+.a.archive-entry {
     position: relative;
     overflow: hidden;
+    z-index: 1; /* Keeps text above the sliding fill layer */
 
     padding: 30px 35px;
     margin: 22px 0;
@@ -269,10 +277,25 @@ hr {
     border-left: 4px solid var(--accent-emerald);
 
     transition:
-        background 0.4s ease,
         transform 0.4s ease,
         border-color 0.4s ease,
         box-shadow 0.4s ease;
+}
+
+/* NEW: The sliding fill layer */
+.archive-entry::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(16, 185, 129, 0.25),
+        rgba(20, 184, 166, 0.35)
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
 }
 
 .archive-entry::after {
@@ -292,20 +315,15 @@ hr {
         transform 0.4s ease;
 }
 
+/* UPDATED: Triggers the fill-up + slide + glow on hover */
 .archive-entry:hover {
-    background:
-        linear-gradient(
-            100deg,
-            var(--bg-entry-hover),
-            rgba(13, 28, 52, 0.96)
-        );
-
     border-left-color: var(--text-green-bright);
-
     transform: translateX(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
 
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.4);
+.archive-entry:hover::before {
+    transform: scaleX(1);
 }
 
 .archive-entry:hover::after {
