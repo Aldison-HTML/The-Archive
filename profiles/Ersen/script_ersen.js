@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         progressBar.style.width = progress + "%";
     }
 
-    window.addEventListener("scroll", updateProgress);
+    window.addEventListener("scroll", updateProgress, { passive: true });
     updateProgress();
 
 });
