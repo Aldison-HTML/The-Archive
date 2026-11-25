@@ -19,6 +19,11 @@ header h1 {
     background-color: rgba(28, 28, 30, 0.85); /* Subtle dark pill so text stays readable over the light body */
     backdrop-filter: blur(6px);
     border-radius: 6px;
+    text-shadow: 
+        0 0 7px #FFD700,
+        0 0 14px #FFD700,
+        0 0 28px #ffa600,
+        0 0 52px #ffa600;
 }
 
 .floating-book {
@@ -41,14 +46,25 @@ section h1 {
     font-size: 2.5rem;
     text-align: center;
     font-family: 'Lora', serif;
-    color: #ececec;
+    color: #FFD700; /* Matches your gold theme */
+    text-shadow: 
+        0 0 7px #FFD700,
+        0 0 10px #FFD700,
+        0 0 21px #FFD700,
+        0 0 42px #ffa600,
+        0 0 82px #ffa600;
 }
 
 section p {
     text-align: center;
-    font-size: 1.75rem;
+    font-size: 2rem;
+    margin-bottom: 20px;
     font-family: 'Lora', serif;
     color: #ececec;
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 12px rgba(255, 215, 0, 0.6),
+        0 0 24px rgba(255, 166, 0, 0.4);
 }
 
 section p {
