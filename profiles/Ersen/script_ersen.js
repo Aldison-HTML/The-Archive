@@ -42,7 +42,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =====================================
-    // 3. INTERACTIVE PYRE EMBERS & FIRE-TRAIL CANVAS
+    // 3. 3D INTERACTIVE TILT ON ARCHIVE CARDS
+    // =====================================
+
+    const tiltCards = document.querySelectorAll(".tilt-card");
+
+    tiltCards.forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Subtle 3D tilt angle
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(8px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg) translateX(0px)`;
+        });
+    });
+
+
+    // =====================================
+    // 4. INTERACTIVE PYRE EMBERS & CLICK SHOCKWAVE
     // =====================================
 
     const canvas = document.getElementById("pyre-canvas");
@@ -56,21 +83,22 @@ document.addEventListener("DOMContentLoaded", () => {
         height = canvas.height = window.innerHeight;
     });
 
-    // Track mouse coordinates for interactive fire reaction
     const mouse = { x: -1000, y: -1000, active: false };
     window.addEventListener("mousemove", (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         mouse.active = true;
-    });
+    }, { passive: true });
+
     window.addEventListener("mouseleave", () => {
         mouse.x = -1000;
         mouse.y = -1000;
         mouse.active = false;
     });
 
+    // Performance-capped ember array
     const embers = [];
-    const emberCount = Math.min(55, Math.floor(width / 25));
+    const emberCount = Math.min(45, Math.floor(width / 30));
 
     class Ember {
         constructor() {
@@ -80,47 +108,43 @@ document.addEventListener("DOMContentLoaded", () => {
         reset(initial = false) {
             this.x = Math.random() * width;
             this.y = initial ? Math.random() * height : height + 20;
-            this.size = 1.5 + Math.random() * 3.5;
-            this.vy = -(0.6 + Math.random() * 1.4); // Upward float speed
-            this.vx = (Math.random() - 0.5) * 0.8;  // Gentle horizontal drift
-            this.color = Math.random() > 0.3 ? "#ff4522" : "#ffaa33"; // Red or bright orange ember
-            this.alpha = 0.2 + Math.random() * 0.6;
-            this.decay = 0.002 + Math.random() * 0.004;
+            this.size = 1.5 + Math.random() * 3;
+            this.vy = -(0.6 + Math.random() * 1.3);
+            this.vx = (Math.random() - 0.5) * 0.6;
+            this.color = Math.random() > 0.35 ? "#ff4522" : "#ff9933";
+            this.alpha = 0.25 + Math.random() * 0.6;
         }
 
         update() {
-            // Mouse repulsion / attraction: Embers scatter or drift toward the cursor like real sparks
-            const dx = this.x - mouse.x;
-            const dy = this.y - mouse.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const maxDist = 140;
+            if (mouse.active) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const distSq = dx * dx + dy * dy;
+                const maxDistSq = 19600; // 140px radius squared (faster math, zero lag)
 
-            if (dist < maxDist && mouse.active) {
-                const force = (maxDist - dist) / maxDist;
-                this.vx += (dx / dist) * force * 0.6;
-                this.vy -= force * 0.8; // Boost upward when cursor passes over
+                if (distSq < maxDistSq && distSq > 1) {
+                    const dist = Math.sqrt(distSq);
+                    const force = (140 - dist) / 140;
+                    this.vx += (dx / dist) * force * 0.5;
+                    this.vy -= force * 0.7;
+                }
             }
 
             this.x += this.vx;
             this.y += this.vy;
-            this.vx *= 0.98; // Dampen horizontal velocity
+            this.vx *= 0.97;
 
-            // Reset if out of bounds or faded out
-            if (this.y < -20 || this.alpha <= 0 || this.x < -20 || this.x > width + 20) {
+            if (this.y < -20 || this.x < -20 || this.x > width + 20) {
                 this.reset();
             }
         }
 
         draw() {
-            ctx.save();
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
-            ctx.shadowColor = "#ff3b1f";
-            ctx.shadowBlur = 12;
             ctx.globalAlpha = this.alpha;
             ctx.fill();
-            ctx.restore();
         }
     }
 
@@ -128,23 +152,59 @@ document.addEventListener("DOMContentLoaded", () => {
         embers.push(new Ember());
     }
 
-    // Animation Loop
+    // Fiery Shockwave Rings on Click
+    const shockwaves = [];
+
+    window.addEventListener("click", (e) => {
+        if (shockwaves.length < 4) { // Cap active shockwaves to prevent lag
+            shockwaves.push({
+                x: e.clientX,
+                y: e.clientY,
+                radius: 4,
+                maxRadius: 110,
+                alpha: 0.75
+            });
+        }
+    });
+
     function animatePyre() {
         ctx.clearRect(0, 0, width, height);
 
-        // Draw a subtle warm glow under the cursor
+        // Subtle warm fire aura following cursor
         if (mouse.active) {
-            const cursorGlow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 160);
-            cursorGlow.addColorStop(0, "rgba(255, 69, 34, 0.1)");
+            const cursorGlow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 150);
+            cursorGlow.addColorStop(0, "rgba(255, 69, 34, 0.12)");
             cursorGlow.addColorStop(1, "transparent");
+            ctx.globalAlpha = 1;
             ctx.fillStyle = cursorGlow;
-            ctx.fillRect(mouse.x - 160, mouse.y - 160, 320, 320);
+            ctx.fillRect(mouse.x - 150, mouse.y - 150, 300, 300);
         }
 
-        // Update and render all floating embers
+        // Draw Embers
+        ctx.shadowColor = "#ff3b1f";
+        ctx.shadowBlur = 8;
         for (let i = 0; i < embers.length; i++) {
             embers[i].update();
             embers[i].draw();
+        }
+        ctx.shadowBlur = 0;
+
+        // Draw Click Shockwave Rings
+        for (let i = shockwaves.length - 1; i >= 0; i--) {
+            const sw = shockwaves[i];
+            sw.radius += 3.5;
+            sw.alpha -= 0.025;
+
+            if (sw.alpha <= 0 || sw.radius >= sw.maxRadius) {
+                shockwaves.splice(i, 1);
+                continue;
+            }
+
+            ctx.beginPath();
+            ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(255, 110, 60, ${sw.alpha})`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
         }
 
         requestAnimationFrame(animatePyre);
