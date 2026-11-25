@@ -1,5 +1,5 @@
 /* =========================================
-   1. GENERAL & OBSIDIAN-FIRE THEME
+   1. GENERAL & OBSIDIAN-PYRE THEME
 ========================================= */
 
 * {
@@ -14,136 +14,225 @@ html {
 }
 
 body {
-    background-color: #050507;
+    background-color: #040406;
     background-image: 
-        radial-gradient(circle at 50% 0%, rgba(220, 50, 30, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 15% 40%, rgba(200, 30, 20, 0.04) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(180, 20, 10, 0.04) 0%, transparent 40%);
-    color: #e4decb;
+        radial-gradient(circle at 50% -10%, rgba(255, 65, 30, 0.16) 0%, transparent 55%),
+        radial-gradient(circle at 10% 45%, rgba(200, 25, 15, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(220, 45, 20, 0.06) 0%, transparent 45%);
+    color: #e6dfd3;
     font-family: 'Lora', Georgia, serif;
     line-height: 1.85;
     overflow-x: hidden;
 }
 
-/* Custom Fire-Red Scrollbar */
+/* Custom Molten Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #050507;
+    background: #040406;
 }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #801510, #ff3b30, #801510);
+    background: linear-gradient(to bottom, #6e0d08, #ff4522, #ff9933, #6e0d08);
     border-radius: 4px;
 }
 
 
 /* =========================================
-   2. HEADER & ARCANE CREST
+   2. ZERO-LAG PURE CSS RISING EMBERS
+========================================= */
+
+.ember-field {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.ember-field span {
+    position: absolute;
+    bottom: -20px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ff6a2b;
+    box-shadow: 0 0 10px #ff3b1f, 0 0 20px #ff8833;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: riseEmber 12s infinite ease-in;
+}
+
+.ember-field span:nth-child(1) { left: 10%; animation-duration: 11s; animation-delay: 0s; }
+.ember-field span:nth-child(2) { left: 22%; animation-duration: 14s; animation-delay: 3s; width: 3px; height: 3px; }
+.ember-field span:nth-child(3) { left: 37%; animation-duration: 10s; animation-delay: 6s; }
+.ember-field span:nth-child(4) { left: 50%; animation-duration: 15s; animation-delay: 1s; width: 5px; height: 5px; }
+.ember-field span:nth-child(5) { left: 64%; animation-duration: 12s; animation-delay: 4s; }
+.ember-field span:nth-child(6) { left: 76%; animation-duration: 13s; animation-delay: 7s; width: 3px; height: 3px; }
+.ember-field span:nth-child(7) { left: 88%; animation-duration: 11s; animation-delay: 2s; }
+.ember-field span:nth-child(8) { left: 95%; animation-duration: 16s; animation-delay: 5s; }
+
+@keyframes riseEmber {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.85;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate3d(25px, -105vh, 0) scale(0.2);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   3. HEADER & SPINNING ARCANE SEAL
 ========================================= */
 
 header {
-    min-height: 360px;
-    padding: 90px 20px 80px;
+    min-height: 390px;
+    padding: 85px 20px 85px;
     text-align: center;
     background:
-        radial-gradient(circle at center, rgba(18, 10, 10, 0.6) 0%, rgba(5, 5, 7, 0.95) 95%),
+        radial-gradient(circle at center, rgba(35, 10, 8, 0.6) 0%, rgba(4, 4, 6, 0.96) 92%),
         url("libr.jpeg");
     background-size: cover;
     background-position: center;
-    border-bottom: 1px solid rgba(255, 59, 48, 0.4);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(255, 69, 45, 0.45);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 4px 30px rgba(255, 50, 20, 0.15);
     position: relative;
 }
 
-.arcane-crest {
-    font-size: 2.2rem;
-    color: #ff453a;
-    margin-bottom: 10px;
-    text-shadow: 0 0 15px rgba(255, 69, 58, 0.8);
-    animation: slowPulse 4s infinite ease-in-out;
+.arcane-seal {
+    position: relative;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@keyframes slowPulse {
-    0%, 100% { transform: scale(1); opacity: 0.85; }
-    50% { transform: scale(1.1); opacity: 1; }
+.seal-ring {
+    position: absolute;
+    inset: 0;
+    border: 1.5px dashed rgba(255, 90, 50, 0.75);
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgba(255, 60, 30, 0.5), inset 0 0 12px rgba(255, 60, 30, 0.3);
+    animation: spinSeal 18s linear infinite;
+}
+
+.seal-icon {
+    font-size: 1.8rem;
+    color: #ff8c5a;
+    text-shadow: 0 0 14px #ff3b1f, 0 0 28px #ff6a2b;
+    animation: emberFlicker 3s infinite alternate ease-in-out;
+}
+
+@keyframes spinSeal {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes emberFlicker {
+    0%, 100% { opacity: 0.85; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.06); }
 }
 
 header h1 {
     font-family: 'Cinzel', Georgia, serif;
-    font-weight: 700;
-    font-size: clamp(2.4rem, 5.5vw, 4.3rem);
+    font-weight: 900;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
     letter-spacing: 5px;
     text-transform: uppercase;
-    
-    /* Fire-Red Gradient Text */
-    background: linear-gradient(180deg, #ffb3b0 0%, #ff3b30 50%, #991410 100%);
+    background: linear-gradient(180deg, #ffd1b3 0%, #ff5733 45%, #a3160d 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 12px rgba(255, 59, 48, 0.35));
+    filter: drop-shadow(0 4px 16px rgba(255, 59, 31, 0.45));
 }
 
 .curator {
-    margin-top: 15px;
-    color: #cc6660;
+    margin-top: 14px;
+    color: #d9786c;
     font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    letter-spacing: 3px;
+    font-size: 0.98rem;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
 }
 
 
 /* =========================================
-   3. MAIN CONTENT & TYPOGRAPHY
+   4. MAIN CONTENT, DROP CAP & TYPOGRAPHY
 ========================================= */
 
 section {
     max-width: 1400px;
     margin: auto;
-    padding: 65px 35px;
+    padding: 70px 35px;
 }
 
 section > h2 {
     font-family: 'Cinzel', Georgia, serif;
     text-align: center;
-    font-size: 2rem;
-    color: #ff6961;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 18px rgba(255, 59, 48, 0.35);
+    font-size: 2.05rem;
+    color: #ff7759;
+    margin-bottom: 28px;
+    letter-spacing: 2.5px;
+    text-shadow: 0 0 22px rgba(255, 65, 35, 0.45);
 }
 
 section .story {
     margin: 32px 0;
-    color: #d6cfb8;
+    color: #dcd4c6;
     font-size: 1.08rem;
     line-height: 2;
     text-align: justify;
+    transition: color 0.3s ease;
+}
+
+section .story:hover {
+    color: #fff6eb;
+}
+
+/* Illuminated Grimoire Drop Cap */
+.drop-cap::first-letter {
+    float: left;
+    font-family: 'Cinzel', serif;
+    font-size: 3.8rem;
+    line-height: 0.85;
+    padding: 6px 14px 4px 0;
+    color: #ff5733;
+    text-shadow: 0 0 18px rgba(255, 69, 40, 0.7);
 }
 
 
 /* =========================================
-   4. FIRE DIVIDERS
+   5. MOLTEN DIVIDERS
 ========================================= */
 
 hr {
     border: none;
     height: 1px;
-    margin: 60px auto;
+    margin: 65px auto;
     background: linear-gradient(
         to right,
         transparent,
-        rgba(255, 59, 48, 0.3),
-        #ff6961,
-        rgba(255, 59, 48, 0.3),
+        rgba(255, 59, 31, 0.35),
+        #ff8c5a,
+        rgba(255, 59, 31, 0.35),
         transparent
     );
-    box-shadow: 0 0 8px rgba(255, 59, 48, 0.25);
+    box-shadow: 0 0 12px rgba(255, 69, 40, 0.35);
 }
 
 
 /* =========================================
-   5. NAVIGATION LINKS
+   6. SWEEPING FIRE BUTTONS
 ========================================= */
 
 .back-navigation {
@@ -152,62 +241,87 @@ hr {
 }
 
 .back-navigation a {
+    position: relative;
     display: inline-block;
-    padding: 10px 24px;
-    color: #ff857d;
+    padding: 12px 28px;
+    color: #ff9478;
     font-family: 'Cinzel', serif;
+    font-weight: 600;
     text-decoration: none;
     font-size: 0.9rem;
-    letter-spacing: 2px;
-    border: 1px solid rgba(255, 59, 48, 0.35);
-    background: rgba(15, 10, 10, 0.85);
-    transition: all 0.35s ease;
+    letter-spacing: 2.5px;
+    border: 1px solid rgba(255, 69, 40, 0.45);
+    background: rgba(14, 8, 8, 0.9);
+    overflow: hidden;
+    transition: color 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.back-navigation a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #a3160d, #ff4522, #ff8533);
+    transform: translateX(-101%);
+    transition: transform 0.35s ease;
+    z-index: 0;
+}
+
+.back-navigation a span {
+    position: relative;
+    z-index: 1;
 }
 
 .back-navigation a:hover {
     color: #050507;
-    background: #ff3b30;
-    border-color: #ffb3b0;
-    box-shadow: 0 0 20px rgba(255, 59, 48, 0.6);
+    border-color: #ff9966;
+    box-shadow: 0 0 25px rgba(255, 69, 40, 0.65);
+}
+
+.back-navigation a:hover::before {
+    transform: translateX(0);
 }
 
 
 /* =========================================
-   6. GRIMOIRE ARCHIVE INDEX
+   7. GRIMOIRE ARCHIVE INDEX & CORNER RUNES
 ========================================= */
 
 .archive-index {
     margin: 65px 0;
-    padding: 45px;
-    background: linear-gradient(145deg, rgba(13, 8, 8, 0.9), rgba(6, 6, 8, 0.92));
-    border: 1px solid rgba(255, 59, 48, 0.45);
+    padding: 48px;
+    background: linear-gradient(145deg, rgba(16, 9, 9, 0.92), rgba(6, 6, 8, 0.95));
+    border: 1px solid rgba(255, 69, 40, 0.4);
     box-shadow:
-        inset 0 0 40px rgba(255, 59, 48, 0.05),
-        0 15px 40px rgba(0, 0, 0, 0.85);
+        inset 0 0 50px rgba(255, 50, 20, 0.06),
+        0 20px 50px rgba(0, 0, 0, 0.9);
     position: relative;
 }
 
-.archive-index::before,
-.archive-index::after {
-    content: "🔥";
+/* Glowing Arcane Corner Brackets */
+.corner {
     position: absolute;
-    font-size: 0.9rem;
-    filter: drop-shadow(0 0 8px #ff3b30);
+    width: 18px;
+    height: 18px;
+    border-color: #ff5733;
+    border-style: solid;
+    box-shadow: 0 0 10px rgba(255, 69, 40, 0.5);
 }
-.archive-index::before { top: 12px; left: 15px; }
-.archive-index::after { bottom: 12px; right: 15px; }
+.corner.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.corner.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.corner.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.corner.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
 .archive-index > h2 {
     font-family: 'Cinzel', serif;
-    color: #ff453a;
-    font-size: 1.85rem;
-    letter-spacing: 2px;
+    color: #ff694a;
+    font-size: 1.9rem;
+    letter-spacing: 2.5px;
     margin-bottom: 10px;
 }
 
 .archive-index > p {
-    color: #c49995;
-    margin-bottom: 30px;
+    color: #c49690;
+    margin-bottom: 32px;
     font-style: italic;
 }
 
@@ -218,45 +332,62 @@ hr {
 }
 
 .archive-entry {
-    padding: 25px 30px;
-    margin: 20px 0;
-    background: rgba(14, 11, 11, 0.85);
-    border: 1px solid rgba(255, 59, 48, 0.2);
-    border-left: 4px solid #b32d25;
-    transition: all 0.35s ease;
+    padding: 26px 32px;
+    margin: 22px 0;
+    background: rgba(14, 10, 11, 0.88);
+    border: 1px solid rgba(255, 69, 40, 0.22);
+    border-left: 4px solid #b8291d;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .archive-entry:hover {
-    background: linear-gradient(90deg, rgba(255, 59, 48, 0.16), rgba(10, 10, 12, 0.95));
-    border-color: rgba(255, 69, 58, 0.6);
-    border-left-color: #ff6961;
-    transform: translateX(10px);
-    box-shadow: 0 0 25px rgba(255, 59, 48, 0.2);
+    background: linear-gradient(90deg, rgba(255, 65, 35, 0.18), rgba(12, 10, 12, 0.95));
+    border-color: rgba(255, 110, 75, 0.65);
+    border-left-color: #ff8c5a;
+    transform: translateX(12px);
+    box-shadow: 0 0 30px rgba(255, 65, 35, 0.25);
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .archive-entry span {
     font-family: 'Cinzel', serif;
-    color: #ff5247;
-    font-size: 0.8rem;
-    font-weight: 700;
+    color: #ff6347;
+    font-size: 0.82rem;
+    font-weight: 800;
     letter-spacing: 3px;
+}
+
+.rune-tag {
+    font-size: 1.1rem !important;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, text-shadow 0.3s ease;
+}
+
+.archive-entry:hover .rune-tag {
+    opacity: 1;
+    text-shadow: 0 0 12px #ff5733;
 }
 
 .archive-entry h3 {
     font-family: 'Cinzel', serif;
-    color: #ffebe8;
-    font-size: 1.4rem;
+    color: #fff0eb;
+    font-size: 1.45rem;
     margin: 6px 0;
 }
 
 .archive-entry p {
-    color: #b5ad96;
+    color: #bdb3a4;
     font-size: 0.96rem;
 }
 
 
 /* =========================================
-   7. DOCUMENT GROUPS & FIRE FRAMES
+   8. DOCUMENT GROUPS & ENCHANTED FRAMES
 ========================================= */
 
 .document-group {
@@ -274,34 +405,47 @@ hr {
     margin-left: 35px;
 }
 
+.grimoire-frame {
+    position: relative;
+    padding: 6px;
+    background: linear-gradient(145deg, #2b0d0a, #09080a);
+    border: 1px solid rgba(255, 75, 45, 0.55);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.92),
+        0 0 28px rgba(255, 60, 30, 0.18);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.grimoire-frame:hover {
+    border-color: #ff8c5a;
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.95),
+        0 0 38px rgba(255, 75, 40, 0.35);
+}
+
 .document-group iframe {
     display: block;
     width: 100%;
     height: 520px;
-    border: 2px solid #b32d25;
+    border: 1px solid rgba(255, 69, 40, 0.25);
     background-color: #0b0a0d;
-    box-shadow:
-        0 0 0 4px #08080a,
-        0 0 0 5px rgba(255, 59, 48, 0.45),
-        0 15px 35px rgba(0, 0, 0, 0.9),
-        0 0 25px rgba(255, 59, 48, 0.15);
 }
 
 
 /* =========================================
-   8. FIRE QUOTES
+   9. PYRE QUOTES
 ========================================= */
 
 .quote {
-    color: #ff857d;
+    color: #ff9478;
     font-style: italic;
     font-size: 1.05rem;
     line-height: 1.8;
     padding: 20px 25px;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, rgba(255, 59, 48, 0.12), rgba(10, 10, 12, 0.6));
-    border-left: 3px solid #ff3b30;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(90deg, rgba(255, 65, 35, 0.14), rgba(10, 10, 12, 0.65));
+    border-left: 3px solid #ff4522;
+    box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.65);
 }
 
 section > hr {
@@ -310,28 +454,28 @@ section > hr {
 
 
 /* =========================================
-   9. READTHEORY PROGRESS BOX
+   10. READTHEORY CODEX PROGRESS BOX
 ========================================= */
 
 .codex-progress-box {
     max-width: 850px;
-    margin: 80px auto;
+    margin: 85px auto;
     padding: 45px 35px;
     text-align: center;
-    background: radial-gradient(circle at top, rgba(20, 11, 11, 0.92), rgba(7, 7, 9, 0.95));
-    border: 1px solid #ff3b30;
+    background: radial-gradient(circle at top, rgba(26, 11, 10, 0.94), rgba(6, 6, 8, 0.96));
+    border: 1px solid rgba(255, 69, 40, 0.65);
     box-shadow: 
-        0 0 35px rgba(255, 59, 48, 0.15),
-        inset 0 0 40px rgba(0, 0, 0, 0.85);
+        0 0 40px rgba(255, 60, 30, 0.18),
+        inset 0 0 45px rgba(0, 0, 0, 0.85);
 }
 
 .codex-progress-box h2 {
     font-family: 'Cinzel', serif;
-    color: #ff453a;
+    color: #ff694a;
     font-size: 1.85rem;
     letter-spacing: 2.5px;
     margin-bottom: 25px;
-    text-shadow: 0 0 15px rgba(255, 59, 48, 0.45);
+    text-shadow: 0 0 16px rgba(255, 65, 35, 0.45);
 }
 
 .codex-progress-box img {
@@ -340,12 +484,12 @@ section > hr {
     max-width: 700px;
     height: auto;
     margin: auto;
-    border: 2px solid #ff3b30;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 59, 48, 0.2);
+    border: 2px solid #d43824;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.92), 0 0 25px rgba(255, 65, 35, 0.25);
 }
 
 .codex-caption {
-    color: #cc8882;
+    color: #d18c82;
     font-size: 0.95rem;
     font-style: italic;
     margin-top: 22px;
@@ -353,22 +497,22 @@ section > hr {
 
 
 /* =========================================
-   10. CLOSING NOTE & FOOTER
+   11. CLOSING NOTE & FOOTER
 ========================================= */
 
 .closing-note {
     clear: both;
-    margin-top: 70px;
-    padding: 45px;
-    background: linear-gradient(135deg, rgba(255, 59, 48, 0.08), rgba(8, 8, 10, 0.92));
-    border: 1px solid rgba(255, 59, 48, 0.45);
-    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.8);
+    margin-top: 75px;
+    padding: 48px;
+    background: linear-gradient(135deg, rgba(255, 65, 35, 0.09), rgba(8, 8, 10, 0.94));
+    border: 1px solid rgba(255, 69, 40, 0.45);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.85);
 }
 
 .closing-note h2 {
     font-family: 'Cinzel', serif;
-    color: #ff453a;
-    font-size: 1.8rem;
+    color: #ff694a;
+    font-size: 1.85rem;
     letter-spacing: 2px;
     margin-bottom: 20px;
 }
@@ -376,45 +520,46 @@ section > hr {
 .signature {
     font-family: 'Cinzel', serif;
     text-align: right;
-    color: #ff857d;
+    color: #ff9478;
     font-size: 1.05rem;
     letter-spacing: 1.5px;
     margin-top: 30px;
-    text-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
+    text-shadow: 0 0 12px rgba(255, 65, 35, 0.35);
 }
 
 footer {
     clear: both;
     padding: 55px 20px;
     text-align: center;
-    background-color: rgba(3, 3, 4, 0.95);
-    border-top: 1px solid rgba(255, 59, 48, 0.4);
+    background-color: rgba(3, 3, 4, 0.96);
+    border-top: 1px solid rgba(255, 69, 40, 0.4);
 }
 
 footer .footer-title {
     font-family: 'Cinzel', serif;
-    color: #ff3b30;
-    font-size: 1.1rem;
+    color: #ff5733;
+    font-size: 1.15rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 8px;
+    text-shadow: 0 0 12px rgba(255, 65, 35, 0.4);
 }
 
 footer p {
-    color: #a37571;
+    color: #a67872;
     font-size: 0.9rem;
     margin: 5px 0;
 }
 
 
 /* =========================================
-   11. UI REVEAL & PROGRESS BAR
+   12. UI REVEAL & PROGRESS BAR
 ========================================= */
 
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(25px);
+    transition: opacity 0.85s ease, transform 0.85s ease;
 }
 
 .reveal.visible {
@@ -431,10 +576,10 @@ footer p {
     background: linear-gradient(
         to right,
         #801510,
-        #ff6961,
-        #ff3b30
+        #ff4522,
+        #ff9933
     );
-    box-shadow: 0 0 12px rgba(255, 59, 48, 0.8);
+    box-shadow: 0 0 14px rgba(255, 80, 40, 0.9);
     z-index: 10000;
 }
 
@@ -445,7 +590,7 @@ header, section, footer {
 
 
 /* =========================================
-   12. RESPONSIVE MOBILE DESIGN
+   13. RESPONSIVE MOBILE DESIGN
 ========================================= */
 
 @media (max-width: 768px) {
