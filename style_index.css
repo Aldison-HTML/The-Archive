@@ -42,6 +42,10 @@ section h1 {
     text-align: center;
     font-family: 'Lora', serif;
     color: #ececec;
+    text-shadow: 
+        0 0 1px #ececec,
+        0 0 5px #ececec,
+        0 0 10px #e5ff63,
 }
 
 section p {
@@ -84,7 +88,6 @@ html, body {
     background-attachment: fixed;
 }
 
-
 .glow-text {
   color: #FFD700;
   font-size: 3rem;
@@ -96,7 +99,6 @@ html, body {
     0 0 82px #ffa600,
     0 0 92px #ffa600;
 }
-
 
 /* --- Navigation Styles --- */
 /* --- Horizontal Navigation Shelf --- */
