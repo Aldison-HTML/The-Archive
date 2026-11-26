@@ -24,7 +24,7 @@ header h1 {
 .floating-book {
     position: absolute;
     z-index: 1;
-    width: 140px; /* Adjust size as needed */
+    width: 200px;
     pointer-events: none; /* Prevents books from blocking text selection */
     mix-blend-mode: lighten; /* Blends the image's dark background into the header */
     opacity: 0.85;
