@@ -19,6 +19,7 @@ header h1 {
     background-color: rgba(28, 28, 30, 0.85); /* Subtle dark pill so text stays readable over the light body */
     backdrop-filter: blur(6px);
     border-radius: 6px;
+}
 
 .floating-book {
     position: absolute;
@@ -41,6 +42,7 @@ section h1 {
     text-align: center;
     font-family: 'Lora', serif;
     color: #ececec;
+}
 
 section p {
     text-align: center;
